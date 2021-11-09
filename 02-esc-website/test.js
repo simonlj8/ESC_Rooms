@@ -1,60 +1,99 @@
 const challenge = [
-    {"Titel": "Room01", 
-    "Beskrivning": "Bla, bla, bla", 
-    "Type": "online/onsite",
+  {
+    Titel: "Room01",
+    Beskrivning: "Starwarz Tema",
+    Type: "online/onsite",
     "Min antal": "X",
     "Max antal": "X",
     "Rating:": "X",
     "URL IMG": "href",
-    "Ettiketter": "tags"},
+    Ettiketter: "tags",
+  },
 
-    {"Titel": "Room02", 
-    "Beskrivning": "Bla, bla, bla", 
-    "Type": "online/onsite",
+  {
+    Titel: "Room02",
+    Beskrivning: "Javascript Tema",
+    Type: "online/onsite",
     "Min antal": "X",
     "Max antal": "X",
     "Rating:": "X",
     "URL IMG": "href",
-    "Ettiketter": "tags"},
+    Ettiketter: "tags",
+  },
 
-    {"Titel": "Room03", 
-    "Beskrivning": "Bla, bla, bla", 
-    "Type": "online/onsite",
+  {
+    Titel: "Room03",
+    Beskrivning: "Bla, bla, bla",
+    Type: "online/onsite",
     "Min antal": "X",
     "Max antal": "X",
     "Rating:": "X",
     "URL IMG": "href",
-    "Ettiketter": "tags"},
+    Ettiketter: "tags",
+  },
 
-    {"Titel": "Room04", 
-    "Beskrivning": "Bla, bla, bla", 
-    "Type": "online/onsite",
+  {
+    Titel: "Room04",
+    Beskrivning: "Bla, bla, bla",
+    Type: "online/onsite",
     "Min antal": "X",
     "Max antal": "X",
     "Rating:": "X",
     "URL IMG": "href",
-    "Ettiketter": "tags"},
+    Ettiketter: "tags",
+  },
 
-    {"Titel": "Room05", 
-    "Beskrivning": "Bla, bla, bla", 
-    "Type": "online/onsite",
+  {
+    Titel: "Room05",
+    Beskrivning: "Bla, bla, bla",
+    Type: "online/onsite",
     "Min antal": "X",
     "Max antal": "X",
     "Rating:": "X",
     "URL IMG": "href",
-    "Ettiketter": "tags"},
+    Ettiketter: "tags",
+  },
 
-    {"Titel": "Room06", 
-    "Beskrivning": "Bla, bla, bla", 
-    "Type": "online/onsite",
+  {
+    Titel: "Room06",
+    Beskrivning: "Bla, bla, bla",
+    Type: "online/onsite",
     "Min antal": "X",
     "Max antal": "X",
-    "Rating": "X",
+    Rating: "X",
     "URL IMG": "href",
-    "Ettiketter": "tags"},
+    Ettiketter: "tags",
+  },
 ];
 
-for (let i = 0; i < challenge.length; i++) {
+function Test1() {
+  let ul = document.getElementById("challenges-list");
+  for (let i = 0; i < challenge.length; i++) {
+    let item = `<li class="challenges-item">
+    <img class="challenge-picture" src="images/challenge.png" />
+    <h3 class="challenge-title">${challenge[i].Titel}</h3>
+    <div class="challenge-meta">
+        <ul class="challenge-rating">
+            <li class="challenge-rating-star on"></li>
+           <li class="challenge-rating-star on"></li>
+           <li class="challenge-rating-star on"></li>
+           <li class="challenge-rating-star on"></li>
+           <li class="challenge-rating-star off"></li>
+       </ul>
+       <small class="challenge-size">######</small>
+    </div>
+       <p class="challenge-description">
+       ${challenge[i].Beskrivning}
+    </p>
+   <a class="challenge-cta" href="#">Book this room</a>
+   </li>
+
+    `;
+    ul.innerHTML += item;
+  }
+}
+
+/* for (let i = 0; i < challenge.length; i++) {
     console.log(challenge[i].Titel);
 
     function createli() {
@@ -62,9 +101,8 @@ for (let i = 0; i < challenge.length; i++) {
         const li = document.createElement("li").className("challenges-item");
         ul.appendChild(li);
     }
-}
-
-
+}; 
+*/
 
 /*
 <li class="challenges-item">
