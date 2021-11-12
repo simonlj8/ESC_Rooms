@@ -2,6 +2,7 @@
 <html>
   <head>
     <link rel="stylesheet" type="text/css" href="main.css" />
+    <link rel="stylesheet" type="text/css" href="search.css">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
   </head>
 
@@ -19,8 +20,66 @@
       </ul>
     </nav>
 
+    <section class="search" id="search">
+        <h2>Filter challenges</h2>
+        <div class="search_type">
+            <p>By type</p>
+            <div>
+              <input type="checkbox" id="online">
+              <label for="online">Include online challenges</label>
+            </div>
+            <div>
+              <input type="checkbox" id="onsite">
+              <label for="onsite">Include on-site challenges</label>
+            </div>
+          </div>
+        <div class="search_rating">
+            <p>By rating</p>
+            <input type="checkbox" name="rating_from" id="rat01">
+            <label for="rat01"></label>
+            <input type="checkbox" name="rating_from" id="rat02">
+            <label for="rat02"></label>
+            <input type="checkbox" name="rating_from" id="rat03">
+            <label for="rat03"></label>
+            <input type="checkbox" name="rating_from" id="rat04">
+            <label for="rat04"></label>
+            <input type="checkbox" name="rating_from" id="rat05">
+            <label for="rat05"></label>
+            <span>to</span>
+            <input type="checkbox" name="rating_to" id="rat06">
+            <label for="rat06"></label>
+            <input type="checkbox" name="rating_to" id="rat07">
+            <label for="rat07"></label>            
+            <input type="checkbox" name="rating_to" id="rat08">
+            <label for="rat08"></label>
+            <input type="checkbox" name="rating_to" id="rat09">
+            <label for="rat09"></label>
+            <input type="checkbox" name="rating_to" id="rat10">
+            <label for="rat10"></label>
+        </div>
+        <div class="search_tags">
+            <p>By tags</p>
+            <button type="checkbox" id="web">
+            <label for="web">Web</label>
+            <button type="checkbox" id="linux">
+            <label for="linux">Linux</label>
+            <button type="checkbox" id="cryptography">
+            <label for="cryptography">Cryptography</label>
+            <button type="checkbox" id="coding">
+            <label for="coding">Coding</label>
+            <button type="checkbox" id="other_tag">
+            <label for="other_tag">Some other_tag</label>
+            <button type="checkbox" id="final_tag">
+            <label for="final_tag">A final_tag</label>
+        </div>
+        <div class="search_keywords">
+            <p>Or type to search for keywords</p>
+            <input type="search" id="challenge_search" name="q">     
+        </div>
+    </section>
+
     <section class="challenges">
-      <h2>#####</h2>
+      <h2>Our challenges</h2>
       <ul id="challenges-list"></ul>
       <div class="challenges-cta">
         <a class="challenges-cta-online" href="#">Online challenges</a>
@@ -62,7 +121,7 @@
         </div>
       </div>
     </footer>
-    <script src="test.js">
+    <script src="checkbox.js">
 
 
       /* document.querySelector('.main-nav-toggle').addEventListener('click', () => {

@@ -1,0 +1,77 @@
+.search {
+    border-style: solid;
+    border-color:lightgray;
+    display: grid;
+    font-size: 18px;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    margin: 15px;
+    padding: 20px;
+}
+
+.search p {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* search by type (online/onsite) */
+.search_type {
+    grid-column-start: 1;
+    grid-row-start: 2;
+}
+
+.search_type input {
+    margin-top: 10px;
+}
+
+/* search by rating */
+.search_rating {
+    grid-column-start: 2;
+    grid-row-start: 2;
+}
+
+.search_rating span {
+    margin: 10px;
+    margin-right: 15px;
+}
+
+.search_rating input[type='checkbox'] {
+    display: none;
+}
+
+.search_rating label {
+    padding: 5px 0 4px 20px;
+    cursor: pointer;
+    background: url("images/star-off.png") left center no-repeat;
+}
+
+.search_rating input[type='checkbox']:checked + label {
+    background-image: url("images/star-on.png");
+}
+
+/* search by tags */
+.search_tags {
+    grid-column-start: 3;
+    grid-row-start: 2;
+}
+
+.search_tags button {
+    background-color: white;
+    border-radius: 8px;
+}
+
+.search_tags button:checked {
+    color: red;
+}
+
+.search_tags label {
+    color: blue;
+    padding: 10px;
+}
+
+/* search by keywords */
+.search_keywords {
+    grid-column-start: 2;
+    grid-row-start: 3;
+    padding-top: 30px;
+}
