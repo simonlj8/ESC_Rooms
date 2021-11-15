@@ -21,7 +21,18 @@ document.querySelector('.modal-btn').addEventListener('click', () => {
 });
 
 document.querySelector('.modal-btn2').addEventListener('click', () => {
+    let valueName = document.getElementById('name').value;
+    let valueEmail = document.getElementById('email').value;
+    let valueTime = document.getElementById('time').value;
+    let valueNumber = document.getElementById('number').value;
+
+    if (!valueName || !valueEmail || !valueTime || !valueNumber) {
+        alert("alert must not be empty");
+        return false; 
+    }
+    else {
     document.querySelector('.modal-step2').classList.toggle('close'),
     document.querySelector('.modal-step3').classList.toggle('open');
+    }
 });
 
