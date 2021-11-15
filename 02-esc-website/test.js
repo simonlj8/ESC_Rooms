@@ -176,3 +176,11 @@ function Test1() {
 <a class="challenge-cta" href="#">Book this room</a>
 </li>
 */
+
+
+
+
+// mobile menu 
+document.querySelector('.main-nav-toggle').addEventListener('click', () => {
+  document.querySelector('.main-nav').classList.toggle('open');
+});
