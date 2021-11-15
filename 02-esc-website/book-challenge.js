@@ -27,7 +27,7 @@ document.querySelector('.modal-btn2').addEventListener('click', () => {
     let valueNumber = document.getElementById('number').value;
 
     if (!valueName || !valueEmail || !valueTime || !valueNumber) {
-        alert("alert must not be empty");
+        alert("Input must not be empty");
         return false; 
     }
     else {
