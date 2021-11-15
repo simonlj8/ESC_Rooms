@@ -285,14 +285,19 @@ img {
   margin: 0 0 1rem;
 }
 
-.challenges-list {
+#challenges-list {
   display: flex;
-  width: 300%;
+  width: auto;
+  flex-wrap: wrap;
+  flex-direction: row;
+  
 }
 @media screen and (min-width: 960px) {
-  .challenges-list {
+  #challenges-list {
     width: auto;
+    flex-wrap: wrap;
     justify-content: center;
+    
   }
 }
 
@@ -362,7 +367,8 @@ img {
 }
 @media screen and (min-width: 960px) {
   .challenges-item {
-    max-width: 363px;
+    width: 700px;
+    /*max-width: 363px;*/
   }
 }
 

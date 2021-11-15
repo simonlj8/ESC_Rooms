@@ -64,6 +64,58 @@ const challenge = [
     "URL IMG": "href",
     Ettiketter: "tags",
   },
+
+  {
+    Titel: "Room07",
+    Beskrivning: "Bla, bla, bla",
+    Type: "online/onsite",
+    "Min antal": "X",
+    "Max antal": "X",
+    Rating: "X",
+    "URL IMG": "href",
+    Ettiketter: "tags",
+  },
+
+  {
+    Titel: "Room08",
+    Beskrivning: "Harr",
+    Type: "online/onsite",
+    "Min antal": "X",
+    "Max antal": "X",
+    Rating: "X",
+    "URL IMG": "href",
+    Ettiketter: "tags",
+  },
+  {
+    Titel: "Room09",
+    Beskrivning: "Abborre",
+    Type: "online/onsite",
+    "Min antal": "X",
+    "Max antal": "X",
+    "Rating:": "X",
+    "URL IMG": "href",
+    Ettiketter: "tags",
+  },
+  {
+    Titel: "Room10",
+    Beskrivning: "Gädda",
+    Type: "online/onsite",
+    "Min antal": "X",
+    "Max antal": "X",
+    "Rating:": "X",
+    "URL IMG": "href",
+    Ettiketter: "tags",
+  },
+  {
+    Titel: "Room11",
+    Beskrivning: "Gös",
+    Type: "online/onsite",
+    "Min antal": "X",
+    "Max antal": "X",
+    "Rating:": "X",
+    "URL IMG": "href",
+    Ettiketter: "tags",
+  },
 ];
 
 function Test1() {
