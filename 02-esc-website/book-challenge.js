@@ -35,4 +35,3 @@ document.querySelector('.modal-btn2').addEventListener('click', () => {
     document.querySelector('.modal-step3').classList.toggle('open');
     }
 });
-
