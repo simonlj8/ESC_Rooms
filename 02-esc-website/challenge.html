@@ -3,10 +3,21 @@
   <head>
     <link rel="stylesheet" type="text/css" href="main.css" />
     <link rel="stylesheet" type="text/css" href="search.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+			integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+			crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="starrate.js">
+
+
+      /* document.querySelector('.main-nav-toggle').addEventListener('click', () => {
+           document.querySelector('.main-nav').classList.toggle('open');
+       }); */
+    </script>
   </head>
 
-  <body onload="{Test1()}">
+  <body> /* onload="{Test1()}" */
     <header class="header">
       <h1 class="logo">Hacker Escape Rooms</h1>
     </header>
@@ -33,29 +44,27 @@
               <label for="onsite">Include on-site challenges</label>
             </div>
           </div>
-        <div class="search_rating">
+        <div class="rating_search">
             <p>By rating</p>
-            <input type="checkbox" name="rating_from" id="rat01">
-            <label for="rat01"></label>
-            <input type="checkbox" name="rating_from" id="rat02">
-            <label for="rat02"></label>
-            <input type="checkbox" name="rating_from" id="rat03">
-            <label for="rat03"></label>
-            <input type="checkbox" name="rating_from" id="rat04">
-            <label for="rat04"></label>
-            <input type="checkbox" name="rating_from" id="rat05">
-            <label for="rat05"></label>
-            <span>to</span>
-            <input type="checkbox" name="rating_to" id="rat06">
-            <label for="rat06"></label>
-            <input type="checkbox" name="rating_to" id="rat07">
-            <label for="rat07"></label>            
-            <input type="checkbox" name="rating_to" id="rat08">
-            <label for="rat08"></label>
-            <input type="checkbox" name="rating_to" id="rat09">
-            <label for="rat09"></label>
-            <input type="checkbox" name="rating_to" id="rat10">
-            <label for="rat10"></label>
+            <div class="star_list">
+              <ul class="rating_from">
+                <li star_rating_from="1"><i class="far fa-star"></i></li>
+                <li star_rating_from="2"><i class="far fa-star"></i></li>
+                <li star_rating_from="3"><i class="far fa-star"></i></li>
+                <li star_rating_from="4"><i class="far fa-star"></i></li>
+                <li star_rating_from="5"><i class="far fa-star"></i></li>
+              </ul>
+              <!-- <span id="rate_from">0</span> -->
+              <span>to</span>
+              <ul class="rating_to">
+                <li star_rating_to="1"><i class="far fa-star"></i></li>
+                <li star_rating_to="2"><i class="far fa-star"></i></li>
+                <li star_rating_to="3"><i class="far fa-star"></i></li>
+                <li star_rating_to="4"><i class="far fa-star"></i></li>
+                <li star_rating_to="5"><i class="far fa-star"></i></li>
+              </ul>
+            </div>
+            <!-- <span id="rate_to">0</span> -->
         </div>
         <div class="search_tags">
             <p>By tags</p>
@@ -121,12 +130,6 @@
         </div>
       </div>
     </footer>
-    <script src="checkbox.js">
 
-
-      /* document.querySelector('.main-nav-toggle').addEventListener('click', () => {
-           document.querySelector('.main-nav').classList.toggle('open');
-       }); */
-    </script>
   </body>
 </html>
