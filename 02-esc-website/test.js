@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", async function loadData() {
+addEventListener("load", async function loadData() {
   const url = 'https://lernia-sjj-assignments.vercel.app/api/challenges';
   const response = await fetch(url);
   const data = await response.json();
@@ -6,7 +6,30 @@ document.addEventListener("DOMContentLoaded", async function loadData() {
   window.challenge = data.challenges;
 
   renderChallenge();
-})
+});
+
+inputData = document.getElementById("inputSearch");
+
+inputData.addEventListener('keyup', function() {
+ let value = this.value;
+ let data = searchData(value, challenge)
+ renderChallenge(data)
+});
+
+function searchData (value, data) {
+  let filterData = []
+
+  for (var i = 0 ; i  < data.length; i++){
+    value = value.toLowerCase()
+    let title = data[i].title.toLowerCase()
+    let description = data[i].description.toLowerCase()
+    
+    if (title.includes(value) || description.includes(value)) {
+      filterData.push(data[i])
+    }
+  }  
+  return filteredData;
+}
 
 function renderChallenge() {
   let ul = document.getElementById("challenges-list");
