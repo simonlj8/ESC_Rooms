@@ -39,16 +39,21 @@ function renderChallenge(data) {
   ul.innerHTML = "";
 
   for (let i = 0; i < data.length; i++) {
-    let item = `<li class="challenges-item">
+    rating = data[i].rating;
+
+    const starsTotal = 5;
+    const starPercentage = (rating / starsTotal) * 100;
+    const starPercentageRounded = Math.round(starPercentage / 10) * 10 + "%";
+
+    let item = `
     <img class="challenge-picture" src=${data[i].image} />
     <h3 class="challenge-title">${data[i].title} (${data[i].type})</h3>
     <div class="challenge-meta">
         <ul class="challenge-rating">
-            <li class="challenge-rating-star on"></li>
-           <li class="challenge-rating-star on"></li>
-           <li class="challenge-rating-star on"></li>
-           <li class="challenge-rating-star on"></li>
-           <li class="challenge-rating-star off"></li>
+            <div class="stars-outer">
+            <div class="stars-inner" style=width:${starPercentageRounded}>
+            </div>
+            </div>
        </ul>
        <small class="challenge-size">${data[i].minParticipants}-${data[i].maxParticipants} participants </small>
     </div>
@@ -56,9 +61,13 @@ function renderChallenge(data) {
        ${data[i].description}
     </p>
    <a class="challenge-cta" href="#">Book this room</a>
-   </li>
     `;
-    ul.innerHTML += item;
+
+    const li = document.createElement("li");
+    li.innerHTML = item;
+    li.querySelector(".challenge-cta").addEventListener;
+    li.classList.add("challenges-item");
+    ul.append(li);
   }
 }
 
