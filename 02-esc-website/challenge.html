@@ -10,7 +10,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script src="starrate.js"></script>
     <script src="book-challenge.js"></script>
-    
   </head>
 
   <body> 
@@ -28,56 +27,54 @@
     </nav>
 
     <section class="search" id="search">
-        <h2>Filter challenges</h2>
-        <div class="search_type">
-            <p>By type</p>
-            <div>
-              <input type="checkbox" id="online">
-              <label for="online">Include online challenges</label>
-            </div>
-            <div>
-              <input type="checkbox" id="onsite">
-              <label for="onsite">Include on-site challenges</label>
-            </div>
+      <h2>Filter challenges</h2>
+      <div class="search_type">
+          <p>By type</p>
+          <div>
+            <input type="checkbox" id="online">
+            <label for="online">Include online challenges</label>
           </div>
-        <div class="rating_search">
-            <p>By rating</p>
-            <div class="star_list">
-              <ul class="rating_from">
-                <li star_rating_from="1"><i class="far fa-star"></i></li>
-                <li star_rating_from="2"><i class="far fa-star"></i></li>
-                <li star_rating_from="3"><i class="far fa-star"></i></li>
-                <li star_rating_from="4"><i class="far fa-star"></i></li>
-                <li star_rating_from="5"><i class="far fa-star"></i></li>
-              </ul>
-              <!-- <span id="rate_from">0</span> -->
-              <span>to</span>
-              <ul class="rating_to">
-                <li star_rating_to="1"><i class="far fa-star"></i></li>
-                <li star_rating_to="2"><i class="far fa-star"></i></li>
-                <li star_rating_to="3"><i class="far fa-star"></i></li>
-                <li star_rating_to="4"><i class="far fa-star"></i></li>
-                <li star_rating_to="5"><i class="far fa-star"></i></li>
-              </ul>
-            </div>
-            <!-- <span id="rate_to">0</span> -->
+          <div>
+            <input type="checkbox" id="onsite">
+            <label for="onsite">Include on-site challenges</label>
+          </div>
         </div>
-        <div class="search_tags">
-            <p>By tags</p>
-            <button type="checkbox" id="web">
-            <label for="web">Web</label>
-            <button type="checkbox" id="linux">
-            <label for="linux">Linux</label>
-            <button type="checkbox" id="cryptography">
-            <label for="cryptography">Cryptography</label>
-            <button type="checkbox" id="coding">
-            <label for="coding">Coding</label>
-            <button type="checkbox" id="other_tag">
-            <label for="other_tag">Some other_tag</label>
-            <button type="checkbox" id="final_tag">
-            <label for="final_tag">A final_tag</label>
-        </div>
-        <div class="search_keywords">
+      <div class="rating_search">
+          <p>By rating</p>
+          <div class="star_list">
+            <ul class="rating_from">
+              <li star_rating_from="1"><i class="far fa-star"></i></li>
+              <li star_rating_from="2"><i class="far fa-star"></i></li>
+              <li star_rating_from="3"><i class="far fa-star"></i></li>
+              <li star_rating_from="4"><i class="far fa-star"></i></li>
+              <li star_rating_from="5"><i class="far fa-star"></i></li>
+            </ul>
+            <span>to</span>
+            <ul class="rating_to">
+              <li star_rating_to="1"><i class="far fa-star"></i></li>
+              <li star_rating_to="2"><i class="far fa-star"></i></li>
+              <li star_rating_to="3"><i class="far fa-star"></i></li>
+              <li star_rating_to="4"><i class="far fa-star"></i></li>
+              <li star_rating_to="5"><i class="far fa-star"></i></li>
+            </ul>
+          </div>
+      </div>
+      <div class="search_tags">
+          <p>By tags</p>
+          <button type="checkbox" id="web">
+          <label for="web">Web</label>
+          <button type="checkbox" id="linux">
+          <label for="linux">Linux</label>
+          <button type="checkbox" id="cryptography">
+          <label for="cryptography">Cryptography</label>
+          <button type="checkbox" id="coding">
+          <label for="coding">Coding</label>
+          <button type="checkbox" id="other_tag">
+          <label for="other_tag">Some other_tag</label>
+          <button type="checkbox" id="final_tag">
+          <label for="final_tag">A final_tag</label>
+      </div>
+      <div class="search_keywords">
             <p>Or type to search for keywords</p>
             <input id="inputSearch" type="text"> 
         </div>

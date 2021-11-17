@@ -24,6 +24,7 @@ function searchData(value, data) {
     value = value.toLowerCase();
     let title = data[i].title.toLowerCase();
     let description = data[i].description.toLowerCase();
+    let rating = data[i].rating;
 
     if (title.includes(value) || description.includes(value)) {
       filteredData.push(data[i]);
