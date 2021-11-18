@@ -21,68 +21,7 @@ onsite.addEventListener("change", () => {
     });
 
 /* buttons "by labels" */
-let web = document.getElementById("web");
-let linux = document.getElementById("linux");
-let cryptography = document.getElementById("cryptography");
-let coding = document.getElementById("coding");
-let other_tag = document.getElementById("other_tag");
-let final_tag = document.getElementById("final_tag");
-
-web.addEventListener("click", () => {
-    web.value = web.checked;
-    if (web.checked == true) {
-        console.log("web");
-      } else {
-        console.log("not web");
-      }
-    });
-
-linux.addEventListener("click", () => {
-    linux.value = linux.checked;
-    if (linux.checked == true) {
-        console.log("linux");
-      } else {
-        console.log("not linux");
-      }
-    });
-
-cryptography.addEventListener("click", () => {
-    cryptography.value = cryptography.checked;
-    if (cryptography.checked == true) {
-        console.log("cryptography");
-      } else {
-        console.log("not cryptography");
-      }
-    });
-
-coding.addEventListener("click", () => {
-    coding.value = coding.checked;
-    if (coding.checked == true) {
-        console.log("coding");
-      } else {
-        console.log("not coding");
-      }
-    });
-
-javascript.addEventListener("click", () => {
-    this.value = other_tag.checked;
-    if (other_tag.checked == true) {
-        console.log("other_tag");
-      } else {
-        console.log("not other_tag");
-      }
-    });
-
-ssh.addEventListener("click", () => {
-    this.value = final_tag.checked;
-    if (final_tag.checked == true) {
-        console.log("final_tag");
-      } else {
-        console.log("not final_tag");
-      }
-    });
-
-    /*let checkboxes = document.querySelectorAll(".cb-tag");
+  let checkboxes = document.querySelectorAll(".cb-tag");
 
   for(let checkbox of checkboxes) {
     checkbox.addEventListener('click', function() {
@@ -104,7 +43,6 @@ ssh.addEventListener("click", () => {
     return cbArray;
 }
 
-
 let tagButtons = document.querySelectorAll(".cb-tag");
 
 tagButtons.forEach(function (i) {
@@ -116,4 +54,3 @@ tagButtons.forEach(function (i) {
    renderChallenge(data);
   });
 });
-*/
