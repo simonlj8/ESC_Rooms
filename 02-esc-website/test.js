@@ -10,6 +10,9 @@ addEventListener("load", async function loadData() {
 
 inputData = document.getElementById("inputSearch");
 
+
+// checkboxes = document.querySelectorAll(input[type=checkbox]);
+
 inputData.addEventListener("keyup", function () {
   let value = this.value;
 
@@ -30,24 +33,20 @@ function searchData(value, data) {
 
     let ratingFrom = 0;
     let ratingTo = 5;
-    let searchType = "online";
-    let label1 = "coding";
-    let label2 = "linux";
-    
-    
-    if (labels.includes(label1) || labels.includes(label2)) {
-    if (type.includes(searchType)) {
+
+
+    if (type.includes(typeArray)) {
+    if (labelArray.every(v=> labels.includes(v))) {
     if (rating > ratingFrom && rating < ratingTo) {
     if (title.includes(value) || description.includes(value)) {
       filteredData.push(data[i]);
     }
+    } 
+    } 
+    }   
   }
-}
-} 
-}
   return filteredData;
 }
-
 
 function renderChallenge(data) {
   let ul = document.getElementById("challenges-list");
@@ -76,6 +75,7 @@ function renderChallenge(data) {
        <p class="challenge-description">
        ${data[i].description}
     </p>
+      ${data[i].labels}
    <a class="challenge-cta" href="#">Book this room</a>
     `;
 
