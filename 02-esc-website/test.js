@@ -25,13 +25,29 @@ function searchData(value, data) {
     let title = data[i].title.toLowerCase();
     let description = data[i].description.toLowerCase();
     let rating = data[i].rating;
+    let type = data[i].type;
+    let labels = data[i].labels;
 
+    let ratingFrom = 0;
+    let ratingTo = 5;
+    let searchType = "online";
+    let label1 = "coding";
+    let label2 = "linux";
+    
+    
+    if (labels.includes(label1) || labels.includes(label2)) {
+    if (type.includes(searchType)) {
+    if (rating > ratingFrom && rating < ratingTo) {
     if (title.includes(value) || description.includes(value)) {
       filteredData.push(data[i]);
     }
   }
+}
+} 
+}
   return filteredData;
 }
+
 
 function renderChallenge(data) {
   let ul = document.getElementById("challenges-list");

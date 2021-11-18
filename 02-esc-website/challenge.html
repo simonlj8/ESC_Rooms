@@ -31,7 +31,7 @@
       <div class="search_type">
           <p>By type</p>
           <div>
-            <input type="checkbox" id="online">
+            <input type="checkbox" id="online" value="online">
             <label for="online">Include online challenges</label>
           </div>
           <div>
@@ -59,20 +59,39 @@
             </ul>
           </div>
       </div>
-      <div class="search_tags">
+      <div class="search_labels">
           <p>By tags</p>
-          <button type="checkbox" id="web">
+          <input type="checkbox" id="web" value="web" class="tag-btn">
           <label for="web">Web</label>
-          <button type="checkbox" id="linux">
+
+          <input type="checkbox" id="linux" class="tag-btn">
           <label for="linux">Linux</label>
-          <button type="checkbox" id="cryptography">
+
+          <input type="checkbox" id="cryptography" class="tag-btn">
           <label for="cryptography">Cryptography</label>
-          <button type="checkbox" id="coding">
+
+          <input type="checkbox" id="coding" class="tag-btn">
           <label for="coding">Coding</label>
-          <button type="checkbox" id="other_tag">
-          <label for="other_tag">Some other_tag</label>
-          <button type="checkbox" id="final_tag">
-          <label for="final_tag">A final_tag</label>
+
+          <input type="checkbox" id="ctf" class="tag-btn">
+          <label for="other_tag">CTF</label>
+
+          <input type="checkbox" id="ssh" class="tag-btn">
+          <label for="final_tag">SSH</label>
+
+          <input type="checkbox" id="electronics" class="tag-btn">
+          <label for="final_tag">Electronics</label>
+
+          <input type="checkbox" id="JavaScript" class="tag-btn">
+          <label for="final_tag">JavaScript</label>
+
+          <input type="checkbox" id="Bash" class="tag-btn">
+          <label for="final_tag">Bash</label>
+
+          <input type="checkbox" id="phreaking" class="tag-btn">
+          <label for="final_tag">Phreaking</label>
+
+
       </div>
       <div class="search_keywords">
             <p>Or type to search for keywords</p>
@@ -83,10 +102,6 @@
     <section class="challenges">
       <h2>Our challenges</h2>
       <ul id="challenges-list"></ul>
-      <div class="challenges-cta">
-        <a class="challenges-cta-online" href="#">Online challenges</a>
-        <a class="challenges-cta-onsite" href="#">On-site challenges</a>
-      </div>
     </section>
 
     <div class="modal">
@@ -153,5 +168,6 @@
       </div>
     </footer>
     <script src="test.js"></script>
+ 
   </body>
 </html>

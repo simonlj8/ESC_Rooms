@@ -23,16 +23,16 @@ stars_to.forEach(item => {
     });
 });
   
-/* render stars before "click" and return rating value */
+/* render stars before the star which got "click" and return rating value */
 function SetRatingStar(rating, stars) {
 let len = stars.length;
 console.log(rating);
 
-for (let i = 0; i < len; i++) {
-    if (i < rating) {
-        stars[i].innerHTML = '<i class="fas fa-star"></i>';
-    } else {
-        stars[i].innerHTML = '<i class="far fa-star"></i>';
+    for (let i = 0; i < len; i++) {
+        if (i < rating) {
+            stars[i].innerHTML = '<i class="fas fa-star"></i>';
+        } else {
+            stars[i].innerHTML = '<i class="far fa-star"></i>';
+        }
     }
-}
 };
