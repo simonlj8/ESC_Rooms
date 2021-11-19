@@ -14,7 +14,6 @@ typeBoxes.forEach(function(checkbox) {
   })
 });
 
-
 /* return value to array from "labels" if checked */
 let labelBoxes = document.querySelectorAll(".search_labels input[type=checkbox]");
 let labelArray = []
@@ -30,4 +29,3 @@ labelBoxes.forEach(function(checkbox) {
     window.labelArray = labelArray;
   })
 });
-

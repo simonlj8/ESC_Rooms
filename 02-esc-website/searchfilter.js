@@ -8,15 +8,25 @@ addEventListener("load", async function loadData() {
   renderChallenge(challenge);
 });
 
+
+checkboxes = document.querySelectorAll("input[type=checkbox]");
+checkboxes.forEach(item => {
+    item.addEventListener("click", function() {
+      console.log("test")
+      let value = "";
+      let data = searchData(value, challenge);
+
+      renderChallenge(data);
+    });
+});
+
+
 inputData = document.getElementById("inputSearch");
-
-
-// checkboxes = document.querySelectorAll(input[type=checkbox]);
-
 inputData.addEventListener("keyup", function () {
+  
   let value = this.value;
-
   let data = searchData(value, challenge);
+
   renderChallenge(data);
 });
 
@@ -31,13 +41,11 @@ function searchData(value, data) {
     let type = data[i].type;
     let labels = data[i].labels;
 
-    let ratingFrom = 0;
-    let ratingTo = 5;
-
+    console.log(ratingFrom)
 
     if (type.includes(typeArray)) {
     if (labelArray.every(v=> labels.includes(v))) {
-    if (rating > ratingFrom && rating < ratingTo) {
+    if (rating >= ratingFrom && rating <= ratingTo) {
     if (title.includes(value) || description.includes(value)) {
       filteredData.push(data[i]);
     }
