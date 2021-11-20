@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <link rel="stylesheet" type="text/css" href="main.css" />
     <link rel="stylesheet" type="text/css" href="search.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
@@ -26,7 +27,13 @@
       </ul>
     </nav>
 
+    <div class="toggle-filter">
+      <h1 class="filter-title">Our challenges</h1>
+      <a class="filter-btn" href="#">Filter challenges</a>
+    </div>
+
     <section class="search" id="search">
+      <a href="/02-esc-website/challenge.html" class="close-filter"><ion-icon name="close-outline"></ion-icon></a>
       <h2>Filter challenges</h2>
       <div class="search_type">
           <p>By type</p>
@@ -100,7 +107,6 @@
     </section>
 
     <section class="challenges">
-      <h2>Our challenges</h2>
       <ul id="challenges-list"></ul>
     </section>
 

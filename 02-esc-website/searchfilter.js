@@ -148,11 +148,8 @@ function renderChallenge(data) {
        </ul>
        <small class="challenge-size">${data[i].minParticipants}-${data[i].maxParticipants} participants </small>
     </div>
-       <p class="challenge-description">
-       ${data[i].description}
-    </p>
-      ${data[i].labels}
-   <a class="challenge-cta" href="#">Book this room</a>
+       <p class="challenge-description">${data[i].description}</p>
+    <a class="challenge-cta" href="#">Book this room</a>
     `;
 
     const li = document.createElement("li");
@@ -168,3 +165,9 @@ document.querySelector(".main-nav-toggle").addEventListener("click", () => {
   document.querySelector(".main-nav").classList.toggle("open");
 
 });
+
+// toggle filters 
+document.querySelector('.filter-btn').addEventListener('click', () => {
+      document.querySelector('.filter-btn').classList.toggle('close'),
+      document.querySelector('#search').classList.toggle('open');
+  });
