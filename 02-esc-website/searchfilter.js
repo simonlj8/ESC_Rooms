@@ -171,3 +171,8 @@ document.querySelector('.filter-btn').addEventListener('click', () => {
       document.querySelector('.filter-btn').classList.toggle('close'),
       document.querySelector('#search').classList.toggle('open');
   });
+  document.querySelector('.close-filter').addEventListener('click', () => {
+    document.querySelector('.filter-btn').classList.remove('close'),
+    document.querySelector('#search').classList.remove('open');
+});
+

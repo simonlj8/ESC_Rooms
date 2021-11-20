@@ -106,11 +106,9 @@
     grid-column-end: 3;
     margin: 20px auto 40px auto;
     padding: 14px;
-
     width: 130px;
     color: #fff;
     background-color: #cb1509;
-
     font-weight: bold;
     text-decoration: none;
     border-radius: 5px;
@@ -130,4 +128,9 @@
   
     color: #75c6e0;
     font-size: 50px;
+  }
+
+  .close-filter:hover {
+      color: #69b3cc;
+      cursor: pointer;
   }
