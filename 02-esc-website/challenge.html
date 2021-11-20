@@ -8,7 +8,7 @@
 			crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <script src="starrate.js"></script>
+    <!--<script src="starrate.js"></script> -->
     <!-- <script src="book-challenge.js"></script> -->
   </head>
 
@@ -31,11 +31,11 @@
       <div class="search_type">
           <p>By type</p>
           <div class="search_type">
-            <input type="checkbox" id="online" value="online">
+            <input type="checkbox" id="online" value="online" class="cb-type">
             <label for="online">Include online challenges</label>
           </div>
           <div>
-            <input type="checkbox" id="onsite" value="onsite">
+            <input type="checkbox" id="onsite" value="onsite" class="cb-type">
             <label for="onsite">Include on-site challenges</label>
           </div>
         </div>
@@ -61,34 +61,34 @@
       </div>
       <div class="search_labels">
           <p>By tags</p>
-          <input type="checkbox" id="web" value="web">
+          <input type="checkbox" id="web" value="web" class="cb-label">
           <label for="web">Web</label>
 
-          <input type="checkbox" id="linux" value="linux">
+          <input type="checkbox" id="linux" value="linux" class="cb-label">
           <label for="linux">Linux</label>
 
-          <input type="checkbox" id="cryptography" value="cryptography">
+          <input type="checkbox" id="cryptography" value="cryptography" class="cb-label">
           <label for="cryptography">Cryptography</label>
 
-          <input type="checkbox" id="coding" value="coding">
+          <input type="checkbox" id="coding" value="coding" class="cb-label">
           <label for="coding">Coding</label>
 
-          <input type="checkbox" id="ctf" value="ctf">
+          <input type="checkbox" id="ctf" value="ctf" class="cb-label">
           <label for="ctf">CTF</label>
 
-          <input type="checkbox" id="ssh" value="ssh">
+          <input type="checkbox" id="ssh" value="ssh" class="cb-label">
           <label for="ssh">SSH</label>
 
-          <input type="checkbox" id="electronics" value="electronics">
+          <input type="checkbox" id="electronics" value="electronics" class="cb-label">
           <label for="electronics">Electronics</label>
 
-          <input type="checkbox" id="javascript" value="javascript">
+          <input type="checkbox" id="javascript" value="javascript" class="cb-label">
           <label for="javascript">JavaScript</label>
 
-          <input type="checkbox" id="Bash" value="Bash">
-          <label for="Bash">Bash</label>
+          <input type="checkbox" id="bash" value="bash" class="cb-label">
+          <label for="bash">Bash</label>
 
-          <input type="checkbox" id="phreaking" value="phreaking">
+          <input type="checkbox" id="phreaking" value="phreaking" class="cb-label">
           <label for="phreaking">Phreaking</label>
 
 
@@ -168,6 +168,6 @@
       </div>
     </footer>
     <script src="searchfilter.js"></script>
-    <script src="type_tag.js"></script>
+  <!-- <script src="type_tag.js"></script> -->
   </body>
 </html>
