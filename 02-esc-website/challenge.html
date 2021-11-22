@@ -129,13 +129,15 @@
       </div>
     </section>
 
+    
     <section class="challenges">
+      <span id="emptyFilter"></span>
       <ul id="challenges-list"></ul>
     </section>
 
     <div class="modal">
       <div class="modal-step1">
-        <h1 class="modal-room-title1">Book room "title of room" (step 1)</h1>
+        <h1 class="modal-room-title1">Book room <span class="RoomName1"> </span> (step 1)</h1>
         <p>What date would you like to come?</p>
         <label>Date</label>
         <input class="input1" type="Date" id="date" />
@@ -143,13 +145,13 @@
       </div>
 
       <div class="modal-step2">
-        <h1 class="modal-room-title2">Book room "title of room" (step 2)</h1>
+        <h1 class="modal-room-title2">Book room <span class="RoomName2"></span> (step 2)</h1>
         <label>Name</label>
         <input class="input2" type="name" id="name" />
         <label>E-mail</label>
         <input class="input2" type="email" id="email" />
         <label>What time?</label>
-        <input class="input3" type="time" id="time" />
+        <select class="input3" id="time"></select>
         <label>How many participants?</label>
         <select class="input3" id="number"></select>
         <a class="modal-btn2" href="#">Submit booking</a>

@@ -103,6 +103,8 @@ inputData.addEventListener("keyup", function () {
 // run filter
 function searchData(value, data) {
   let filteredData = [];
+  document.getElementById('emptyFilter').innerHTML = "";
+
 
   for (var i = 0; i < data.length; i++) {
     let value = inputData.value.toLowerCase();
@@ -126,6 +128,9 @@ function searchData(value, data) {
     }
   }
   console.log(filteredData);
+  if (filteredData.length == 0) {
+    document.getElementById('emptyFilter').innerHTML = "No room match search";
+  }
   return filteredData;
 }
 
@@ -136,6 +141,7 @@ function renderChallenge(data) {
 
   for (let i = 0; i < data.length; i++) {
     rating = data[i].rating;
+    let type = data[i].type;
 
     const starsTotal = 5;
     const starPercentage = (rating / starsTotal) * 100;
@@ -153,11 +159,19 @@ function renderChallenge(data) {
        </ul>
        <small class="challenge-size">${data[i].minParticipants}-${data[i].maxParticipants} participants </small>
     </div>
-       <p class="challenge-description">${data[i].description}</p>
-    <a class="challenge-cta" href="#">Book this room</a>
+       <p class="challenge-description">${data[i].description}</p>    
     `;
+    let bookBtn1 = `<a class="challenge-cta" href="#">Book this room</a>`; 
+    let bookBtn2 = `<a class="challenge-cta" href="#">Take challenge online</a>`;
     const li = document.createElement("li");
-    li.innerHTML = item;
+    
+    if (type == "online") {
+      li.innerHTML = item+bookBtn2;
+    } else 
+    {
+      li.innerHTML = item+bookBtn1;
+    }
+
     li.querySelector(".challenge-cta").addEventListener(
       "click",
 
@@ -172,6 +186,9 @@ function renderChallenge(data) {
           );
           min++;
         }
+        document.querySelector(".RoomName1").innerHTML = `${data[i].title}`;
+        document.querySelector(".RoomName2").innerHTML = `${data[i].title}`;
+
         modal.classList.toggle("open");
         overlay.classList.toggle("active");
       }
@@ -208,27 +225,85 @@ btns.forEach(function (i) {
 */
 document.querySelector(".modal-btn").addEventListener("click", () => {
   let valueDate = document.getElementById("date").value;
+  let today = new Date ()
+  var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+
+  var datePlusYear = today.getFullYear()+1+'-'+(today.getMonth()+1)+'-'+today.getDate();
+
+  console.log(datePlusYear)
+
+  if (valueDate < date) {
+    alert("Date must be after todays date");
+    return false;
+  }
+
+  if (valueDate > datePlusYear) {
+    alert("Date can not exceed 1 year from todays date");
+    return false;
+  }
 
   if (!valueDate) {
     alert("Input must not be empty");
     return false;
   } else {
+
+    async function datefunction () {
+      avalibleDate = "https://lernia-sjj-assignments.vercel.app/api/booking/available-times?date="+valueDate;
+      const response = await fetch(avalibleDate);
+      const dateArray = await response.json();
+
+    console.log(dateArray)
+
+    let selectTime = document.getElementById("time");
+
+    for (let i = 0; i < dateArray.slots.length; i++) {
+      selectTime.options[selectTime.options.length] = new Option(
+        dateArray.slots[i]);
+    }
+  }
+
+    datefunction();
+
     document.querySelector(".modal-step1").classList.toggle("close", true),
       document.querySelector(".modal-step2").classList.toggle("open", true);
   }
 });
 
+
+
 document.querySelector(".modal-btn2").addEventListener("click", () => {
   let valueName = document.getElementById("name").value;
   let valueEmail = document.getElementById("email").value;
+  let valueDate = document.getElementById("date").value;
   let valueTime = document.getElementById("time").value;
   let valueNumber = document.getElementById("number").value;
+
+  let booking = {name:valueName, email:valueEmail, date:valueDate, time:valueTime, participants:3};
+
+  console.log(booking)
 
   if (!valueName || !valueEmail || !valueTime || !valueNumber) {
     alert("Input must not be empty");
     return false;
   } else {
+
+    fetch('https://lernia-sjj-assignments.vercel.app/api/booking/reservations', {
+  method: 'POST',
+  mode: 'cors',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify(booking),
+})
+.then(response => response.json())
+.then(booking => {
+  console.log('Success:', booking);
+})
+.catch((error) => {
+  console.error('Error:', error);
+});
+
     document.querySelector(".modal-step2").classList.toggle("close"),
-      document.querySelector(".modal-step3").classList.toggle("open");
+    document.querySelector(".modal-step3").classList.toggle("open");
   }
 });
