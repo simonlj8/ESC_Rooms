@@ -3,6 +3,9 @@ let challenge;
 ratingFrom = 0;
 ratingTo = 5;
 
+let modal = document.querySelector(".modal");
+let overlay = document.querySelector(".overlay");
+
 addEventListener("load", async function loadData() {
   challenges = "https://lernia-sjj-assignments.vercel.app/api/challenges";
   const response = await fetch(challenges);
@@ -153,10 +156,26 @@ function renderChallenge(data) {
        <p class="challenge-description">${data[i].description}</p>
     <a class="challenge-cta" href="#">Book this room</a>
     `;
-
     const li = document.createElement("li");
     li.innerHTML = item;
-    li.querySelector(".challenge-cta").addEventListener;
+    li.querySelector(".challenge-cta").addEventListener(
+      "click",
+
+      function () {
+        let select = document.getElementById("number");
+        let min = Number(`${data[i].minParticipants}`);
+        let max = Number(`${data[i].maxParticipants}`);
+
+        while (min <= max) {
+          select.options[select.options.length] = new Option(
+            min + " participants"
+          );
+          min++;
+        }
+        modal.classList.toggle("open");
+        overlay.classList.toggle("active");
+      }
+    );
     li.classList.add("challenges-item");
     ul.append(li);
   }
@@ -175,4 +194,41 @@ document.querySelector(".filter-btn").addEventListener("click", () => {
 document.querySelector(".close-filter").addEventListener("click", () => {
   document.querySelector(".filter-btn").classList.remove("close"),
     document.querySelector("#search").classList.remove("open");
+});
+
+/* boookning */
+/* let btns = document.querySelectorAll(".challenge-cta");
+
+btns.forEach(function (i) {
+  i.addEventListener("click", function () {
+    document.querySelector(".modal").classList.toggle("open"),
+      document.querySelector(".overlay").classList.toggle("active");
+  });
+});
+*/
+document.querySelector(".modal-btn").addEventListener("click", () => {
+  let valueDate = document.getElementById("date").value;
+
+  if (!valueDate) {
+    alert("Input must not be empty");
+    return false;
+  } else {
+    document.querySelector(".modal-step1").classList.toggle("close", true),
+      document.querySelector(".modal-step2").classList.toggle("open", true);
+  }
+});
+
+document.querySelector(".modal-btn2").addEventListener("click", () => {
+  let valueName = document.getElementById("name").value;
+  let valueEmail = document.getElementById("email").value;
+  let valueTime = document.getElementById("time").value;
+  let valueNumber = document.getElementById("number").value;
+
+  if (!valueName || !valueEmail || !valueTime || !valueNumber) {
+    alert("Input must not be empty");
+    return false;
+  } else {
+    document.querySelector(".modal-step2").classList.toggle("close"),
+      document.querySelector(".modal-step3").classList.toggle("open");
+  }
 });
