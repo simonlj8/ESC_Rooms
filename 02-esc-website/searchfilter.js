@@ -2,7 +2,6 @@ let value;
 let challenge;
 ratingFrom = 0;
 ratingTo = 5;
-
 let modal = document.querySelector(".modal");
 let overlay = document.querySelector(".overlay");
 
@@ -10,8 +9,6 @@ addEventListener("load", async function loadData() {
   challenges = "https://lernia-sjj-assignments.vercel.app/api/challenges";
   const response = await fetch(challenges);
   const data = await response.json();
-
-  console.log(data);
   challenge = data.challenges;
   renderChallenge(challenge);
 });
@@ -19,10 +16,18 @@ addEventListener("load", async function loadData() {
 // starrating from
 document.addEventListener("DOMContentLoaded", () => {
   stars_from = document.querySelectorAll(".rating_from li");
-
   stars_from.forEach((item) => {
     item.addEventListener("click", function () {
       let rating_from = this.getAttribute("star_rating_from");
+
+      if (rating_from == 1) {
+        this.setAttribute("star_rating_from", 0);
+      
+      } 
+      if (rating_from == 0) {
+        this.setAttribute("star_rating_from", 1);
+      }
+
       ratingFrom = rating_from;
       let data = searchData(value, challenge);
 
@@ -39,6 +44,14 @@ document.addEventListener("DOMContentLoaded", () => {
   stars_to.forEach((item) => {
     item.addEventListener("click", function () {
       let rating_to = this.getAttribute("star_rating_to");
+
+      if (rating_to == true) {
+        this.setAttribute("star_rating_to", 0);
+      }
+      if (rating_to == 0) {
+        this.setAttribute("star_rating_to", 1);
+      }
+
       ratingTo = rating_to;
       let data = searchData(value, challenge);
 
@@ -70,7 +83,6 @@ typeBoxes.forEach(function (checkbox) {
       .map((i) => i.value);
 
     let data = searchData(value, challenge);
-    console.log(typeArray);
     renderChallenge(data);
   });
 });
@@ -86,8 +98,6 @@ labelBoxes.forEach(function (checkbox) {
       .map((i) => i.value);
 
     let data = searchData(value, challenge);
-
-    console.log(labelArray);
     renderChallenge(data);
   });
 });
@@ -108,16 +118,13 @@ function searchData(value, data) {
 
   for (var i = 0; i < data.length; i++) {
     let value = inputData.value.toLowerCase();
-
     let title = data[i].title.toLowerCase();
     let description = data[i].description.toLowerCase();
     let labels = data[i].labels;
     let rating = data[i].rating;
     let type = data[i].type;
 
-    console.log(ratingFrom);
-
-    if (rating >= ratingFrom && rating <= ratingTo) {
+    if (rating >= ratingFrom && rating <= ratingTo || ratingTo == 0 && ratingFrom == 0) {
       if (type.includes(typeArray) || typeArray.length == 2) {
         if (labelArray.every((v) => labels.includes(v))) {
           if (title.includes(value) || description.includes(value)) {
@@ -127,7 +134,6 @@ function searchData(value, data) {
       }
     }
   }
-  console.log(filteredData);
   if (filteredData.length == 0) {
     document.getElementById('emptyFilter').innerHTML = "No room match search";
   }
@@ -142,7 +148,6 @@ function renderChallenge(data) {
   for (let i = 0; i < data.length; i++) {
     rating = data[i].rating;
     let type = data[i].type;
-
     const starsTotal = 5;
     const starPercentage = (rating / starsTotal) * 100;
     const starPercentageRounded = Math.round(starPercentage / 10) * 10 + "%";
@@ -161,15 +166,14 @@ function renderChallenge(data) {
     </div>
        <p class="challenge-description">${data[i].description}</p>    
     `;
-    let bookBtn1 = `<a class="challenge-cta" href="#">Book this room</a>`; 
+    let bookBtn1 = `<a class="challenge-cta" href="#">Book this room</a>`;
     let bookBtn2 = `<a class="challenge-cta" href="#">Take challenge online</a>`;
     const li = document.createElement("li");
-    
+
     if (type == "online") {
-      li.innerHTML = item+bookBtn2;
-    } else 
-    {
-      li.innerHTML = item+bookBtn1;
+      li.innerHTML = item + bookBtn2;
+    } else {
+      li.innerHTML = item + bookBtn1;
     }
 
     li.querySelector(".challenge-cta").addEventListener(
@@ -211,26 +215,16 @@ document.querySelector(".filter-btn").addEventListener("click", () => {
 document.querySelector(".close-filter").addEventListener("click", () => {
   document.querySelector(".filter-btn").classList.remove("close"),
     document.querySelector("#search").classList.remove("open");
+    
 });
 
-/* boookning */
-/* let btns = document.querySelectorAll(".challenge-cta");
-
-btns.forEach(function (i) {
-  i.addEventListener("click", function () {
-    document.querySelector(".modal").classList.toggle("open"),
-      document.querySelector(".overlay").classList.toggle("active");
-  });
-});
-*/
+// bookning
 document.querySelector(".modal-btn").addEventListener("click", () => {
   let valueDate = document.getElementById("date").value;
-  let today = new Date ()
-  var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+  let today = new Date()
+  var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
 
-  var datePlusYear = today.getFullYear()+1+'-'+(today.getMonth()+1)+'-'+today.getDate();
-
-  console.log(datePlusYear)
+  var datePlusYear = today.getFullYear() + 1 + '-' + (today.getMonth() + 1) + '-' + today.getDate();
 
   if (valueDate < date) {
     alert("Date must be after todays date");
@@ -247,20 +241,18 @@ document.querySelector(".modal-btn").addEventListener("click", () => {
     return false;
   } else {
 
-    async function datefunction () {
-      avalibleDate = "https://lernia-sjj-assignments.vercel.app/api/booking/available-times?date="+valueDate;
+    async function datefunction() {
+      avalibleDate = "https://lernia-sjj-assignments.vercel.app/api/booking/available-times?date=" + valueDate;
       const response = await fetch(avalibleDate);
       const dateArray = await response.json();
 
-    console.log(dateArray)
+      let selectTime = document.getElementById("time");
 
-    let selectTime = document.getElementById("time");
-
-    for (let i = 0; i < dateArray.slots.length; i++) {
-      selectTime.options[selectTime.options.length] = new Option(
-        dateArray.slots[i]);
+      for (let i = 0; i < dateArray.slots.length; i++) {
+        selectTime.options[selectTime.options.length] = new Option(
+          dateArray.slots[i]);
+      }
     }
-  }
 
     datefunction();
 
@@ -269,8 +261,6 @@ document.querySelector(".modal-btn").addEventListener("click", () => {
   }
 });
 
-
-
 document.querySelector(".modal-btn2").addEventListener("click", () => {
   let valueName = document.getElementById("name").value;
   let valueEmail = document.getElementById("email").value;
@@ -278,9 +268,7 @@ document.querySelector(".modal-btn2").addEventListener("click", () => {
   let valueTime = document.getElementById("time").value;
   let valueNumber = document.getElementById("number").value;
 
-  let booking = {name:valueName, email:valueEmail, date:valueDate, time:valueTime, participants:3};
-
-  console.log(booking)
+  let booking = { name: valueName, email: valueEmail, date: valueDate, time: valueTime, participants: 3 };
 
   if (!valueName || !valueEmail || !valueTime || !valueNumber) {
     alert("Input must not be empty");
@@ -288,22 +276,21 @@ document.querySelector(".modal-btn2").addEventListener("click", () => {
   } else {
 
     fetch('https://lernia-sjj-assignments.vercel.app/api/booking/reservations', {
-  method: 'POST',
-  mode: 'cors',
-  headers: {
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify(booking),
-})
-.then(response => response.json())
-.then(booking => {
-  console.log('Success:', booking);
-})
-.catch((error) => {
-  console.error('Error:', error);
-});
-
+      method: 'POST',
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(booking),
+    })
+      .then(response => response.json())
+      .then(booking => {
+        console.log('Success:', booking);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
     document.querySelector(".modal-step2").classList.toggle("close"),
-    document.querySelector(".modal-step3").classList.toggle("open");
+      document.querySelector(".modal-step3").classList.toggle("open");
   }
 });

@@ -134,3 +134,12 @@
       color: #69b3cc;
       cursor: pointer;
   }
+
+#emptyFilter {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    font-weight: bold;
+    font-size: 2rem;
+    color: #cb1509;
+}
