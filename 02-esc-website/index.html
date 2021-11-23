@@ -3,6 +3,12 @@
  <head>
   <link rel="stylesheet" type="text/css" href="main.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+      integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+      crossorigin="anonymous"/>
 </head>
 
 <body>
@@ -45,70 +51,12 @@
       </li>
     </ul>
   </section>
-  <section class="challenges">
-    <h2>Popular challenges right now</h2>
-    <ul class="challenges-list-index">
-      <li class="challenges-item">
-        <img class="challenge-picture" src="images/challenge.png" />
-        <h3 class="challenge-title">Title of room (on-site)</h3>
-        <div class="challenge-meta">
-          <ul class="challenge-rating">
-            <li class="challenge-rating-star on"></li>
-            <li class="challenge-rating-star on"></li>
-            <li class="challenge-rating-star on"></li>
-            <li class="challenge-rating-star on"></li>
-            <li class="challenge-rating-star off"></li>
-          </ul>
-          <small class="challenge-size">2-6 participants</small>
-        </div>
-        <p class="challenge-description">
-          Reprehenderit voluptate ullamco pariatur labore cupidatat
-          consectetur est adipisicing enim. Deserunt sit irure consequat
-          consequat elit aliquip eiusmod aliquip et ipsum ipsum.
-        </p>
-        <a class="challenge-cta" href="#">Book this room</a>
-      </li>
-      <li class="challenges-item">
-        <img class="challenge-picture" src="images/challenge.png" />
-        <h3 class="challenge-title">Title of room (on-site)</h3>
-        <div class="challenge-meta">
-          <ul class="challenge-rating">
-            <li class="challenge-rating-star on"></li>
-            <li class="challenge-rating-star on"></li>
-            <li class="challenge-rating-star on"></li>
-            <li class="challenge-rating-star on"></li>
-            <li class="challenge-rating-star off"></li>
-          </ul>
-          <small class="challenge-size">2-6 participants</small>
-        </div>
-        <p class="challenge-description">
-          Reprehenderit voluptate ullamco pariatur labore cupidatat
-          consectetur est adipisicing enim. Deserunt sit irure consequat
-          consequat elit aliquip eiusmod aliquip et ipsum ipsum.
-        </p>
-        <a class="challenge-cta" href="#">Book this room</a>
-      </li>
-      <li class="challenges-item">
-        <img class="challenge-picture" src="images/challenge.png" />
-        <h3 class="challenge-title">Title of room (on-site)</h3>
-        <div class="challenge-meta">
-          <ul class="challenge-rating">
-            <li class="challenge-rating-star on"></li>
-            <li class="challenge-rating-star on"></li>
-            <li class="challenge-rating-star on"></li>
-            <li class="challenge-rating-star on"></li>
-            <li class="challenge-rating-star off"></li>
-          </ul>
-          <small class="challenge-size">2-6 participants</small>
-        </div>
-        <p class="challenge-description">
-          Reprehenderit voluptate ullamco pariatur labore cupidatat
-          consectetur est adipisicing enim. Deserunt sit irure consequat
-          consequat elit aliquip eiusmod aliquip et ipsum ipsum.
-        </p>
-        <a class="challenge-cta" href="#">Book this room</a>
-      </li>
-    </ul>
+
+  <section class="challenges">  
+    <h2>Popular challenges right now</h2>  
+    <ul id="challenges-list"></ul>
+   </section>
+  
     <div class="challenges-cta">
       <a class="challenges-cta-online" href="#">Online challenges</a>
       <a class="challenges-cta-onsite" href="#">On-site challenges</a>
@@ -148,37 +96,42 @@
         <a href="#">Book on-site today</a>
       </div>
     </div>
-  </section>
+  </section>-->
+
+  
+
 
   <div class="modal">
     <div class="modal-step1">
-      <h1 class="modal-room-title1"> Book room "title of room" (step 1) </h1>
-      <p> What date would you like to come? </p>
+      <h1 class="modal-room-title1">Book room <span class="RoomName1"> </span> (step 1)</h1>
+      <p>What date would you like to come?</p>
       <label>Date</label>
-      <input class="input1" type="Date" id="date">
+      <input class="input1" type="Date" id="date" />
       <a class="modal-btn" href="#">Search available times</a>
     </div>
 
     <div class="modal-step2">
-      <h1 class="modal-room-title2"> Book room "title of room" (step 2) </h1>
+      <h1 class="modal-room-title2">Book room <span class="RoomName2"></span> (step 2)</h1>
       <label>Name</label>
-      <input class="input2" type="name" id="name">
+      <input class="input2" type="name" id="name" />
       <label>E-mail</label>
-      <input class="input2" type="email" id="email">
+      <input class="input2" type="email" id="email" />
       <label>What time?</label>
-      <input class="input3" type="time" id="time">
+      <select class="input3" id="time"></select>
       <label>How many participants?</label>
-      <input class="input3" type="number" id="number">
-      <small></small>
+      <select class="input3" id="number"></select>
       <a class="modal-btn2" href="#">Submit booking</a>
     </div>
-  
+
     <div class="modal-step3">
       <h2 class="modal-title3">Thank you!</h2>
-      <a class="modal-btn3" href="/02-esc-website/index.html">Back to challenges</a>
+      <a class="modal-btn3" href="/02-esc-website/challenge.html"
+        >Back to challenges</a
+      >
     </div>
   </div>
   <div class="overlay"></div>
+
 
   <footer class="footer">
     <div class="footer-content">
@@ -213,8 +166,10 @@
     </div>
   </footer>
 
-  <script src="book-challenge.js"></script>
-  <script src="test.js"></script>
+  
+  <script src="threecards.js"></script>
+
+  
 
 </body>
 </html>
