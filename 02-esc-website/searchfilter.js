@@ -19,7 +19,11 @@ document.addEventListener("DOMContentLoaded", () => {
   stars_from.forEach((item) => {
     item.addEventListener("click", function () {
       let rating_from = this.getAttribute("star_rating_from");
+      star1 = document.getElementById("star1");
 
+      if (rating_from > 1) {
+        star1.setAttribute("star_rating_from", 1);
+      }
       if (rating_from == 1) {
         this.setAttribute("star_rating_from", 0);
       }
@@ -41,13 +45,24 @@ document.addEventListener("DOMContentLoaded", () => {
   stars_to.forEach((item) => {
     item.addEventListener("click", function () {
       let rating_to = this.getAttribute("star_rating_to");
+      star2 = document.getElementById("star2");
 
-      if (rating_to == true) {
+      if (rating_to > 1) {
+        star2.setAttribute("star_rating_to", 1);
+      }
+      if (rating_to == 1) {
         this.setAttribute("star_rating_to", 0);
       }
       if (rating_to == 0) {
         this.setAttribute("star_rating_to", 1);
       }
+
+      if (rating_to == 0) {
+        ratingTo = 5;
+      } else {
+        ratingTo = rating_to;
+      }
+
       let data = searchData(value, challenge);
       renderChallenge(data);
       return SetRatingStar(rating_to, stars_to);
