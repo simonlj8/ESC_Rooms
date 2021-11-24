@@ -48,12 +48,6 @@ document.addEventListener("DOMContentLoaded", () => {
       if (rating_to == 0) {
         this.setAttribute("star_rating_to", 1);
       }
-      if  (rating_to == 0) {
-        ratingTo=5
-      } else {
-      ratingTo = rating_to;
-      }
-      ratingTo = rating_to;
       let data = searchData(value, challenge);
       renderChallenge(data);
       return SetRatingStar(rating_to, stars_to);
