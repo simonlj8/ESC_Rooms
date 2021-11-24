@@ -316,7 +316,7 @@ img {
 
 .challenges-item {
   display: flex;
-  flex-direction: column;
+  flex-direction: column; 
   border-radius: 0.3rem;
   background-color: white;
   box-shadow: 0 0 1rem rgba(182, 189, 181, 0.5);
@@ -328,7 +328,7 @@ img {
   margin: 0 1rem;
 }
 .challenges-item .challenge-title {
-  font-size: 1.8rem;
+  font-size: 1.4rem;
   font-weight: normal;
   margin-top: 1rem;
 }
@@ -361,14 +361,13 @@ img {
   margin-bottom: 1rem;
 }
 .challenges-item .challenge-cta {
-  display: block;
   margin: 0.5rem;
   background-color: #e3170a;
   padding: 1rem 3rem;
   border-radius: 0.3rem;
   color: black;
   text-decoration: none;
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: bold;
   transition: background-color 0.2s;
   color: white;
@@ -384,13 +383,13 @@ img {
     /*max-width: 363px;*/
   }
 }
-
 .challenges-cta {
   padding: 1rem 0;
   display: flex;
   flex-direction: column-reverse;
   align-items: center;
   margin: 2rem 0;
+
 }
 .challenges-cta-onsite {
   display: block;
@@ -415,7 +414,7 @@ img {
 @media screen and (min-width: 960px) {
   .challenges-cta {
     flex-direction: row;
-    justify-content: center;
+    justify-content: center; 
     padding: 0;
   }
   .challenges-cta-online {
@@ -597,21 +596,20 @@ img {
 
 .modal.open {
   visibility: visible;
-
   animation: 0.4s both modal-enter;
 }
 
 .modal {
   visibility: hidden;
-
   z-index: 3;
   position: fixed;
   top: 50%;
   left: 50%;
-  width: 700px;
-  height: 60vh;
+  width: 40vw;
+  max-width: 800px;
+  height: 55vh;
+  max-height: 800px;
   color: #fff;
-
   padding: 1rem;
   background: #011827;
   border-radius: 4px;
@@ -640,6 +638,7 @@ img {
 
 .modal-room-title1 {
   font-weight: normal;
+  font-size: 1.6rem;
   padding: 20px 0px;
 }
 
@@ -657,14 +656,12 @@ label {
   position: absolute;
   right: 0;
   bottom: 0;
-
   margin: 1rem;
   padding: 1rem 3rem;
   background-color: #e3170a;
   border-radius: 0.3rem;
-
   text-decoration: none;
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: bold;
   color: #fff;
 }
@@ -690,11 +687,12 @@ label {
 .modal .input3 {
   margin-bottom: 30px;
   padding: 6px;
-  width: 100px;
+  width: 120px;
 }
 
 .modal-room-title2 {
   font-weight: normal;
+  font-size: 1.6rem;
   padding: 20px 0px;
 }
 
@@ -710,14 +708,12 @@ label {
   position: absolute;
   right: 0;
   bottom: 0;
-
   margin: 1rem;
   padding: 1rem 3rem;
   background-color: #e3170a;
   border-radius: 0.3rem;
-
   text-decoration: none;
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: bold;
   color: #fff;
 }
@@ -728,29 +724,39 @@ label {
 
 .modal-step3.open {
   visibility: visible;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  height: inherit;
 }
 
 .modal .modal-step3 .modal-title3 {
-  margin-top: 25%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: auto;
+  padding: 10px;
   font-size: 40px;
   font-weight: normal;
-  padding: 20px 0px;
 }
 
 .modal-btn3 {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: auto;
+  padding: 10px;
   font-weight: bold;
   font-size: 1.2rem;
   color: #75c6e0 !important;
-  padding: 1rem 2rem;
 }
 
 .modal-btn3:hover {
   text-decoration: underline;
+}
+
+.close-modal {
+  position: absolute;
+  right: 2%;
+  color: #75c6e0;
+  font-size: 50px;
 }
 
 .overlay.active {
@@ -760,18 +766,15 @@ label {
 
 .overlay {
   visibility: hidden;
-
   position: fixed;
   left: 0;
   top: 0;
   height: 100%;
   width: 100%;
-
   background-color: rgba(255, 255, 255, 0.7);
 }
 
 /* Styling for the Stars on the cards */
-
 .stars-outer {
   position: relative;
   display: inline-block;
@@ -798,4 +801,154 @@ label {
   font-family: "Font Awesome 5 free";
   font-weight: 900;
   color: red;
+}
+
+/* filter */
+.search {
+  display: none;
+}
+
+.search.open {
+  display: unset;
+  display: grid;
+  font-size: 18px;
+  grid-template-columns: 0.6fr 0.6fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  margin: 0px auto 50px auto; 
+  padding: 20px;
+  width: 90%;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+
+.search p {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* search by type (online/onsite) */
+.search_type {
+  grid-column-start: 1;
+  grid-row-start: 2;
+}
+
+.search_type input {
+  margin-top: 10px;
+}
+
+/* search by rating */
+.rating_search {
+  grid-column-start: 2;
+  grid-row-start: 2;
+}
+
+.rating_search ul {
+  display: inline-block;
+}
+
+.rating_search li {
+  color: red;
+  display: inline-block;
+  font-size: 15px;
+}
+
+/* search by labels */
+.search_labels {
+  grid-column-start: 3;
+  grid-row-start: 2;
+}
+
+.search_labels input[type=checkbox] {
+  display: none;
+}
+
+.search_labels label {
+  background-color: white;
+  border-style: solid;
+  border-radius: 30px;
+  border-color: lightgray;
+  border-width: 3px;
+  color: gray;
+  display: inline-block;
+  font-size: 14px;
+  height: 20px;
+  line-height: 150%;
+  margin-bottom: 10px;
+  padding-left: 12px;
+  padding-right: 12px;
+  position: relative;
+}
+
+.search_labels input[type=checkbox]:checked+label {
+  background-color: grey;
+  border-color: grey;
+  color: white;
+}
+
+/* search by keywords */
+.search_keywords {
+  grid-column-start: 2;
+  grid-row-start: 3;
+  padding-top: 30px;
+}
+
+.toggle-filter {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 0.5fr;
+
+}
+
+.filter-title {
+  grid-column-start: 2;
+  grid-column-end: 3;   
+  margin-top: 60px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 2.4rem;
+  color: #75c6e0;  
+}
+
+.filter-btn {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  margin: 20px auto;
+  padding: 1rem 2rem;
+  background-color: #e3170a;
+  border-radius: 0.3rem;
+  color: black;
+  text-align: center;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #fff;
+}
+
+.filter-btn:hover {
+  background-color: #b81206;
+  cursor: pointer;
+}
+
+.filter-btn.close {
+  display: none;
+}
+
+.close-filter {
+  position: absolute;
+  right: 5%;
+  color: #75c6e0;
+  font-size: 50px;
+}
+
+.close-filter:hover {
+    color: #69b3cc;
+    cursor: pointer;
+}
+
+#filter-error {
+  display: flex;
+  justify-content: center;
+  margin-top: 100px;
+  font-weight: bold;
+  font-size: 2rem;
+  color: #cb1509;
 }

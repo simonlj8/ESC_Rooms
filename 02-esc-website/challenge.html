@@ -1,27 +1,21 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" type="text/css" href="main.css" />
-    <link rel="stylesheet" type="text/css" href="search.css" />
-    <link
+    <link 
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
       integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
-      crossorigin="anonymous"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <!--<script src="starrate.js"></script> -->
-    <!-- <script src="book-challenge.js"></script> -->
+      crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   </head>
-
   <body>
     <header class="header">
       <h1 class="logo">Hacker Escape Rooms</h1>
     </header>
+
     <nav class="main-nav">
       <a class="main-nav-toggle"></a>
       <ul class="main-menu">
@@ -34,7 +28,7 @@
 
     <div class="toggle-filter">
       <h1 class="filter-title">Our challenges</h1>
-      <a class="filter-btn" href="#">Filter challenges</a>
+      <a class="filter-btn">Filter challenges</a>
     </div>
 
     <section class="search" id="search">
@@ -51,6 +45,7 @@
           <label for="onsite">Include on-site challenges</label>
         </div>
       </div>
+
       <div class="rating_search">
         <p>By rating</p>
         <div class="star_list">
@@ -71,56 +66,28 @@
           </ul>
         </div>
       </div>
+
       <div class="search_labels">
         <p>By tags</p>
         <input type="checkbox" id="web" value="web" class="cb-label" />
         <label for="web">Web</label>
-
         <input type="checkbox" id="linux" value="linux" class="cb-label" />
         <label for="linux">Linux</label>
-
-        <input
-          type="checkbox"
-          id="cryptography"
-          value="cryptography"
-          class="cb-label"
-        />
+        <input type="checkbox" id="cryptography" value="cryptography" class="cb-label"/>
         <label for="cryptography">Cryptography</label>
-
         <input type="checkbox" id="coding" value="coding" class="cb-label" />
         <label for="coding">Coding</label>
-
         <input type="checkbox" id="ctf" value="ctf" class="cb-label" />
         <label for="ctf">CTF</label>
-
         <input type="checkbox" id="ssh" value="ssh" class="cb-label" />
         <label for="ssh">SSH</label>
-
-        <input
-          type="checkbox"
-          id="electronics"
-          value="electronics"
-          class="cb-label"
-        />
+        <input type="checkbox" id="electronics" value="electronics" class="cb-label"/>
         <label for="electronics">Electronics</label>
-
-        <input
-          type="checkbox"
-          id="javascript"
-          value="javascript"
-          class="cb-label"
-        />
+        <input type="checkbox" id="javascript" value="javascript"class="cb-label"/>
         <label for="javascript">JavaScript</label>
-
-        <input type="checkbox" id="bash" value="bash" class="cb-label" />
+        <input type="checkbox" id="bash" value="bash" class="cb-label"/>
         <label for="bash">Bash</label>
-
-        <input
-          type="checkbox"
-          id="phreaking"
-          value="phreaking"
-          class="cb-label"
-        />
+        <input type="checkbox" id="phreaking" value="phreaking" class="cb-label"/>
         <label for="phreaking">Phreaking</label>
       </div>
       <div class="search_keywords">
@@ -128,14 +95,14 @@
         <input id="inputSearch" type="text" />
       </div>
     </section>
-
     
     <section class="challenges">
-      <span id="emptyFilter"></span>
+      <span id="filter-error"></span>
       <ul id="challenges-list"></ul>
     </section>
 
     <div class="modal" id="modal-Close">
+      <a href="/02-esc-website/challenge.html" class="close-modal"><ion-icon name="close-outline"></ion-icon></a>
       <div class="modal-step1">
         <h1 class="modal-room-title1">Book room <span class="RoomName1"> </span> (step 1)</h1>
         <p>What date would you like to come?</p>
@@ -143,7 +110,6 @@
         <input class="input1" type="Date" id="date" />
         <a class="modal-btn" href="#">Search available times</a>
       </div>
-
       <div class="modal-step2">
         <h1 class="modal-room-title2">Book room <span class="RoomName2"></span> (step 2)</h1>
         <label>Name</label>
@@ -156,12 +122,9 @@
         <select class="input3" id="number"></select>
         <a class="modal-btn2" href="#">Submit booking</a>
       </div>
-
       <div class="modal-step3">
         <h2 class="modal-title3">Thank you!</h2>
-        <a class="modal-btn3" href="/02-esc-website/challenge.html"
-          >Back to challenges</a
-        >
+        <a class="modal-btn3" href="/02-esc-website/challenge.html">Back to challenges</a>
       </div>
     </div>
     <div class="overlay"></div>
@@ -200,11 +163,8 @@
         </div>
       </div>
     </footer>
+
     <script src="searchfilter.js"></script>
-    <script
-      type="module"
-      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
-    ></script>
-    <!-- <script src="type_tag.js"></script> -->
+    
   </body>
 </html>

@@ -1,9 +1,9 @@
 let value;
 let challenge;
-ratingFrom = 0;
-ratingTo = 5;
 let modal = document.querySelector(".modal");
 let overlay = document.querySelector(".overlay");
+ratingFrom = 0;
+ratingTo = 5;
 
 addEventListener("load", async function loadData() {
   challenges = "https://lernia-sjj-assignments.vercel.app/api/challenges";
@@ -22,15 +22,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (rating_from == 1) {
         this.setAttribute("star_rating_from", 0);
-      
-      } 
+      }
       if (rating_from == 0) {
         this.setAttribute("star_rating_from", 1);
       }
-
       ratingFrom = rating_from;
       let data = searchData(value, challenge);
-
       renderChallenge(data);
       return SetRatingStar(rating_from, stars_from);
     });
@@ -51,10 +48,8 @@ document.addEventListener("DOMContentLoaded", () => {
       if (rating_to == 0) {
         this.setAttribute("star_rating_to", 1);
       }
-
       ratingTo = rating_to;
       let data = searchData(value, challenge);
-
       renderChallenge(data);
       return SetRatingStar(rating_to, stars_to);
     });
@@ -106,14 +101,13 @@ labelBoxes.forEach(function (checkbox) {
 inputData = document.getElementById("inputSearch");
 inputData.addEventListener("keyup", function () {
   let data = searchData(value, challenge);
-
   renderChallenge(data);
 });
 
 // run filter
 function searchData(value, data) {
   let filteredData = [];
-  document.getElementById('emptyFilter').innerHTML = "";
+  document.getElementById('filter-error').innerHTML = "";
 
 
   for (var i = 0; i < data.length; i++) {
@@ -135,7 +129,7 @@ function searchData(value, data) {
     }
   }
   if (filteredData.length == 0) {
-    document.getElementById('emptyFilter').innerHTML = "No room match search";
+    document.getElementById('filter-error').innerHTML = "No room match search";
   }
   return filteredData;
 }
@@ -215,27 +209,24 @@ document.querySelector(".filter-btn").addEventListener("click", () => {
 document.querySelector(".close-filter").addEventListener("click", () => {
   document.querySelector(".filter-btn").classList.remove("close"),
     document.querySelector("#search").classList.remove("open");
-    
+
 });
 
 // bookning
 document.querySelector(".modal-btn").addEventListener("click", () => {
   let valueDate = document.getElementById("date").value;
   let today = new Date()
-  var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
-
-  var datePlusYear = today.getFullYear() + 1 + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+  let date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+  let datePlusYear = today.getFullYear() + 1 + '-' + (today.getMonth() + 1) + '-' + today.getDate();
 
   if (valueDate < date) {
     alert("Date must be after todays date");
     return false;
   }
-
   if (valueDate > datePlusYear) {
     alert("Date can not exceed 1 year from todays date");
     return false;
   }
-
   if (!valueDate) {
     alert("Input must not be empty");
     return false;
@@ -253,7 +244,6 @@ document.querySelector(".modal-btn").addEventListener("click", () => {
           dateArray.slots[i]);
       }
     }
-
     datefunction();
 
     document.querySelector(".modal-step1").classList.toggle("close", true),
