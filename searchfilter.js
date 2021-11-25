@@ -274,7 +274,7 @@ document.querySelector(".modal-btn2").addEventListener("click", () => {
   let valueTime = document.getElementById("time").value;
   let valueNumber = document.getElementById("number").value;
 
-  let booking = { name: valueName, email: valueEmail, date: valueDate, time: valueTime, participants: 3 };
+  let booking = { name: valueName, email: valueEmail, date: valueDate, time: valueTime, participants: parseInt(valueNumber) };
 
   if (!valueName || !valueEmail || !valueTime || !valueNumber) {
     alert("Input must not be empty");
