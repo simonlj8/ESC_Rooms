@@ -2,8 +2,11 @@ let value;
 let challenge;
 let modal = document.querySelector(".modal");
 let overlay = document.querySelector(".overlay");
-ratingFrom = 0;
-ratingTo = 5;
+let selectTime = document.getElementById("time");
+let selectNumber = document.getElementById("number");
+let valueDate = document.getElementById("date").value;
+let ratingFrom = 0;
+let ratingTo = 5;
 
 addEventListener("load", async function loadData() {
   challenges = "https://lernia-sjj-assignments.vercel.app/api/challenges";
@@ -123,7 +126,6 @@ function searchData(value, data) {
   let filteredData = [];
   document.getElementById('filter-error').innerHTML = "";
 
-
   for (var i = 0; i < data.length; i++) {
     let value = inputData.value.toLowerCase();
     let title = data[i].title.toLowerCase();
@@ -144,7 +146,10 @@ function searchData(value, data) {
   }
   if (filteredData.length == 0) {
     document.getElementById('filter-error').innerHTML = "No room match search";
-  }
+    document.querySelector("#filter-error").classList.toggle("active", true);
+  } else {
+    document.querySelector("#filter-error").classList.toggle("active", false);
+}
   return filteredData;
 }
 
@@ -188,12 +193,11 @@ function renderChallenge(data) {
       "click",
 
       function () {
-        let select = document.getElementById("number");
         let min = Number(`${data[i].minParticipants}`);
         let max = Number(`${data[i].maxParticipants}`);
 
         while (min <= max) {
-          select.options[select.options.length] = new Option(
+          selectNumber.options[selectNumber.options.length] = new Option(
             min + " participants"
           );
           min++;
@@ -228,10 +232,10 @@ document.querySelector(".close-filter").addEventListener("click", () => {
 
 // bookning
 document.querySelector(".modal-btn").addEventListener("click", () => {
-  let valueDate = document.getElementById("date").value;
   let today = new Date()
   let date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
   let datePlusYear = today.getFullYear() + 1 + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+  valueDate = document.getElementById("date").value;
 
   if (valueDate < date) {
     alert("Date must be after todays date");
@@ -248,10 +252,8 @@ document.querySelector(".modal-btn").addEventListener("click", () => {
 
     async function datefunction() {
       avalibleDate = "https://lernia-sjj-assignments.vercel.app/api/booking/available-times?date=" + valueDate;
-      const response = await fetch(avalibleDate);
-      const dateArray = await response.json();
-
-      let selectTime = document.getElementById("time");
+      let response = await fetch(avalibleDate);
+      let dateArray = await response.json();
 
       for (let i = 0; i < dateArray.slots.length; i++) {
         selectTime.options[selectTime.options.length] = new Option(
@@ -298,3 +300,37 @@ document.querySelector(".modal-btn2").addEventListener("click", () => {
       document.querySelector(".modal-step3").classList.toggle("open");
   }
 });
+
+//toggle modal
+function removeOptions(selectTime, selectNumber) {
+  let i, L = selectTime.options.length - 1;
+  for(i = L; i >= 0; i--) {
+     selectTime.options.remove(i);
+  }
+  let j, F = selectNumber.options.length - 1;
+  for(j = F; j >= 0; j--) {
+     selectNumber.options.remove(j);
+  }
+  document.getElementById("date").value = "";
+  document.getElementById("email").value = "";
+  document.getElementById("name").value = "";
+}
+
+function toggleClose() {
+document.querySelector(".overlay").classList.toggle("active", false);
+document.querySelector(".modal").classList.toggle("open", false);
+document.querySelector(".modal-step1").classList.toggle("close", false);
+document.querySelector(".modal-step2").classList.toggle("close", false);
+document.querySelector(".modal-step2").classList.toggle("open", false);
+document.querySelector(".modal-step3").classList.toggle("open", false);
+
+removeOptions(selectTime, selectNumber);
+}
+
+document.querySelector(".close-modal").addEventListener("click", function E() {
+  toggleClose();
+})
+
+document.querySelector(".modal-btn3").addEventListener("click", function F() {
+  toggleClose();
+})

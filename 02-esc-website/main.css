@@ -952,3 +952,30 @@ label {
   font-size: 2rem;
   color: #cb1509;
 }
+
+#filter-error.active {
+  animation: 2s ease-out error-blink;
+}
+
+@keyframes error-blink {
+  0% {
+      opacity: 0; 
+      transform: translate(-1200px);
+  }
+  20% {
+      opacity: 1;
+  }
+  40% {
+      opacity: 0;
+  }
+  60% {
+      opacity: 1;
+  }
+  80% {
+      opacity: 0;
+  }
+  100% {
+      opacity: 1;
+      transform: translate(0px);
+  }
+}
