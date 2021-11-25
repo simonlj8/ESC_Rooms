@@ -22,7 +22,7 @@ addEventListener("load", async function loadData() {
   }
   
   function renderChallenge(data) {
-    let ul = document.getElementById("challenges-list");
+    let ul = document.getElementById("challenges-list-index");
     ul.innerHTML = "";
   
     for (let i = 0; i < data.length; i++) {
