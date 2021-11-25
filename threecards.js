@@ -195,3 +195,8 @@ document.querySelector(".close-modal").addEventListener("click", function E() {
 document.querySelector(".modal-btn3").addEventListener("click", function F() {
   toggleClose();
 })
+
+// mobile menu
+document.querySelector(".main-nav-toggle").addEventListener("click", () => {
+  document.querySelector(".main-nav").classList.toggle("open");
+});
