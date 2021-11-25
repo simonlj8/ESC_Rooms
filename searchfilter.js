@@ -5,8 +5,8 @@ let overlay = document.querySelector(".overlay");
 let selectTime = document.getElementById("time");
 let selectNumber = document.getElementById("number");
 let valueDate = document.getElementById("date").value;
-let ratingFrom = 0;
-let ratingTo = 5;
+let RatingFilterFrom = 0;
+let RatingFilterTo = 5;
 
 addEventListener("load", async function loadData() {
   let challenges = "https://lernia-sjj-assignments.vercel.app/api/challenges";
@@ -18,57 +18,49 @@ addEventListener("load", async function loadData() {
 
 // starrating from
 document.addEventListener("DOMContentLoaded", () => {
-  stars_from = document.querySelectorAll(".rating_from li");
-  stars_from.forEach((item) => {
+  starsFrom = document.querySelectorAll(".rating-from li");
+  starsFrom.forEach((item) => {
     item.addEventListener("click", function () {
-      let rating_from = this.getAttribute("star_rating_from");
+      let ratingFrom = this.getAttribute("star-rating-from");
       star1 = document.getElementById("star1");
-
-      if (rating_from > 1) {
-        star1.setAttribute("star_rating_from", 1);
+      if (ratingFrom > 1) {
+        star1.setAttribute("star-rating-from", 1);
       }
-      if (rating_from == 1) {
-        this.setAttribute("star_rating_from", 0);
+      if (ratingFrom == 1) {
+        this.setAttribute("star-rating-from", 0);
       }
-      if (rating_from == 0) {
-        this.setAttribute("star_rating_from", 1);
+      if (ratingFrom == 0) {
+        this.setAttribute("star-rating-from", 1);
       }
-      ratingFrom = rating_from;
+      RatingFilterFrom = ratingFrom;
       let data = searchData(value, challenge);
       renderChallenge(data);
-      return SetRatingStar(rating_from, stars_from);
+      return SetRatingStar(ratingFrom, starsFrom);
     });
   });
 });
 
 // starrating to
 document.addEventListener("DOMContentLoaded", () => {
-  stars_to = document.querySelectorAll(".rating_to li");
+  starsTo = document.querySelectorAll(".rating-to li");
 
-  stars_to.forEach((item) => {
+  starsTo.forEach((item) => {
     item.addEventListener("click", function () {
-      let rating_to = this.getAttribute("star_rating_to");
+      let ratingTo = this.getAttribute("star-rating-to");
       star2 = document.getElementById("star2");
-
-      if (rating_to > 1) {
-        star2.setAttribute("star_rating_to", 1);
+      if (ratingTo > 1) {
+        star2.setAttribute("star-rating-to", 1);
       }
-      if (rating_to == 1) {
-        this.setAttribute("star_rating_to", 0);
+      if (ratingTo == 1) {
+        this.setAttribute("star-rating-to", 0);
       }
-      if (rating_to == 0) {
-        this.setAttribute("star_rating_to", 1);
+      if (ratingTo == 0) {
+        this.setAttribute("star-rating-to", 1);
       }
-
-      if (rating_to == 0) {
-        ratingTo = 5;
-      } else {
-        ratingTo = rating_to;
-      }
-
+      RatingFilterTo = ratingTo;
       let data = searchData(value, challenge);
       renderChallenge(data);
-      return SetRatingStar(rating_to, stars_to);
+      return SetRatingStar(ratingTo, starsTo);
     });
   });
 });
@@ -134,7 +126,7 @@ function searchData(value, data) {
     let rating = data[i].rating;
     let type = data[i].type;
 
-    if (rating >= ratingFrom && rating <= ratingTo || ratingTo == 0 && ratingFrom == 0) {
+    if (rating >= RatingFilterFrom && rating <= RatingFilterTo) {
       if (type.includes(typeArray) || typeArray.length == 2) {
         if (labelArray.every((v) => labels.includes(v))) {
           if (title.includes(value) || description.includes(value)) {
