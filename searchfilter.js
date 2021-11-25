@@ -9,7 +9,7 @@ let ratingFrom = 0;
 let ratingTo = 5;
 
 addEventListener("load", async function loadData() {
-  challenges = "https://lernia-sjj-assignments.vercel.app/api/challenges";
+  let challenges = "https://lernia-sjj-assignments.vercel.app/api/challenges";
   const response = await fetch(challenges);
   const data = await response.json();
   challenge = data.challenges;
