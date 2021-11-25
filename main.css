@@ -314,13 +314,11 @@ img {
 }
 
  /*The three cards in index.html */
-
 #challenges-list-index {
   display: flex;
   width: 300%; 
   flex-direction: row;
   justify-content: center;
-  
 }
 @media screen and (min-width: 960px) {
   #challenges-list-index {
@@ -329,7 +327,6 @@ img {
     flex-wrap: wrap;
     justify-content: center;
     flex-direction: row;
-    
   }
 }
 
@@ -857,7 +854,9 @@ label {
   height: 60vh;
   padding: 20px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  animation: search_open 0.6s;
 }
+
 @media screen and (min-width: 960px) {
   .search.open {
     display: grid;
@@ -867,6 +866,15 @@ label {
     margin: 0px auto 50px auto; 
     width: 90%;
     height: 40vh;
+  }
+}
+
+@keyframes search_open {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
 
