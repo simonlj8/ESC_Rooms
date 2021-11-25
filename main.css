@@ -603,20 +603,28 @@ img {
   visibility: hidden;
   z-index: 3;
   position: fixed;
-  top: 50%;
-  left: 50%;
-  width: 40vw;
-  max-width: 800px;
-  height: 55vh;
-  max-height: 800px;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  margin: auto;
+  width: 85vw;
+  height: 90vh;
   color: #fff;
   padding: 1rem;
   background: #011827;
   border-radius: 4px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.7);
-
-  transform: translate(-50%, -50%);
 }
+@media screen and (min-width: 960px) {
+  .modal {
+    width: 40vw;
+    max-width: 800px;
+    height: 60vh;
+    max-height: 800px;
+    padding: 1rem;
+  }
+} 
 
 @keyframes modal-enter {
   from {
@@ -639,7 +647,7 @@ img {
 .modal-room-title1 {
   font-weight: normal;
   font-size: 1.6rem;
-  padding: 20px 0px;
+  padding: 60px 0px;
 }
 
 .modal-step1 p {
@@ -957,20 +965,19 @@ label {
 #filter-error {
   display: flex;
   justify-content: center;
-  margin-top: 100px;
+  padding: 30px;
   font-weight: bold;
-  font-size: 2rem;
+  font-size: 1.8rem;
   color: #cb1509;
 }
 
 #filter-error.active {
-  animation: 2s ease-out error-blink;
+  animation: 2s both error-blink;
 }
 
 @keyframes error-blink {
   0% {
       opacity: 0; 
-      transform: translate(-1200px);
   }
   20% {
       opacity: 1;
@@ -986,6 +993,5 @@ label {
   }
   100% {
       opacity: 1;
-      transform: translate(0px);
   }
 }
