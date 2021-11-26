@@ -286,13 +286,13 @@ img {
   margin: 0 0 1rem;
 }
 
-.challenges-index {
+.index {
   
   overflow: scroll;
 }
 
 @media screen and (min-width: 960px) {
-  .challenges-index {
+  .index {
     overflow: hidden;
   }
 
