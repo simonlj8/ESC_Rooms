@@ -1,5 +1,6 @@
 let value;
 let challenge;
+let pageCheck = document.querySelector(".challenges"); 
 let modal = document.querySelector(".modal");
 let overlay = document.querySelector(".overlay");
 let selectTime = document.getElementById("time");
@@ -12,9 +13,25 @@ addEventListener("load", async function loadData() {
   let challenges = "https://lernia-sjj-assignments.vercel.app/api/challenges";
   const response = await fetch(challenges);
   const data = await response.json();
-  challenge = data.challenges;
-  renderChallenge(challenge);
+
+  //checking if it is the index or challenge page
+  if (pageCheck.classList.contains("index")) {
+    challenge = getTopChallenges(data.challenges, 3)
+    renderChallenge(challenge);
+  } else {
+    challenge = data.challenges;
+    renderChallenge(challenge);
+  }
 });
+
+
+function getTopChallenges(data, count){
+  const sortedData = data.sort((a, b) => a.rating > b.rating ? -1 : 1);
+  
+  const sliceend = count
+  const topChallenges = sortedData.slice(0, sliceend)
+  return topChallenges;
+}
 
 // starrating from
 document.addEventListener("DOMContentLoaded", () => {
@@ -106,12 +123,15 @@ labelBoxes.forEach(function (checkbox) {
   });
 });
 
+
 // key word filter
-inputData = document.getElementById("inputSearch");
-inputData.addEventListener("keyup", function () {
+if (pageCheck.classList.length == 1) {
+  inputData = document.getElementById("inputSearch");
+  inputData.addEventListener("keyup", function () {
   let data = searchData(value, challenge);
   renderChallenge(data);
 });
+} 
 
 // run filter
 function searchData(value, data) {
@@ -181,9 +201,17 @@ document.getElementById("resetFilterBtn").addEventListener("click", function () 
 
 // display challenges
 function renderChallenge(data) {
-  let ul = document.getElementById("challenges-list");
-  ul.innerHTML = "";
+  let ulChallenge = document.getElementById("challenges-list");
+  let ulIndex = document.getElementById("challenges-list-index");
 
+  //checking if it is the index or challenge page
+  if (pageCheck.classList.contains("index")) {
+    ul = ulIndex; 
+  } else {
+    ul = ulChallenge;
+  }
+    ul.innerHTML = "";
+ 
   for (let i = 0; i < data.length; i++) {
     rating = data[i].rating;
     let type = data[i].type;
@@ -240,21 +268,28 @@ function renderChallenge(data) {
   }
 }
 
-// mobile menu
 document.querySelector(".main-nav-toggle").addEventListener("click", () => {
   document.querySelector(".main-nav").classList.toggle("open");
 });
 
-// toggle filters
-document.querySelector(".filter-btn").addEventListener("click", () => {
-  document.querySelector(".filter-btn").classList.toggle("close"),
-    document.querySelector("#search").classList.toggle("open");
-});
-document.querySelector(".close-filter").addEventListener("click", () => {
-  document.querySelector(".filter-btn").classList.remove("close"),
-    document.querySelector("#search").classList.remove("open");
+//checking if it is the index or challenge page and only shows the filter on the challenge page
+if (pageCheck.classList.length == 1) {
+  
+  // toggle filters
+  document.querySelector(".filter-btn").addEventListener("click", () => {
+    document.querySelector(".filter-btn").classList.toggle("close"),
+      document.querySelector("#search").classList.toggle("open");
+  });
+  document.querySelector(".close-filter").addEventListener("click", () => {
+    document.querySelector(".filter-btn").classList.remove("close"),
+      document.querySelector("#search").classList.remove("open");
+  
+  });
+}
 
-});
+
+// mobile menu
+
 
 // bookning
 document.querySelector(".modal-btn").addEventListener("click", () => {
