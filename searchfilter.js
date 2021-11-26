@@ -145,6 +145,40 @@ function searchData(value, data) {
   return filteredData;
 }
 
+// reset filter
+document.getElementById("resetFilterBtn").addEventListener("click", function () {
+  
+  // reset type filter
+  let typeId = document.getElementsByClassName("cb-type");
+  let typeIdCount = typeId.length;
+  for(let i = 0; i < typeIdCount; i++){
+      let id=(typeId[i].id)
+      document.getElementById(id).checked = false;
+  }
+
+  // reset label filter
+  let labelId = document.getElementsByClassName("cb-label");
+  let labelIdCount = labelId.length;
+  for(let j = 0; j < labelIdCount; j++){
+      let id=(labelId[j].id)
+      document.getElementById(id).checked = false;
+  }
+
+  // reset star filter
+  let RatingFilterFrom = 0;
+  let RatingFilterTo = 5;
+  SetRatingStar(0, starsFrom);
+  SetRatingStar(5, starsTo);
+
+  // reset input field
+  document.getElementById('inputSearch').value = "";
+
+  // reset filter-error message
+  document.getElementById('filter-error').innerHTML = "";
+
+  renderChallenge(challenge);
+});
+
 // display challenges
 function renderChallenge(data) {
   let ul = document.getElementById("challenges-list");

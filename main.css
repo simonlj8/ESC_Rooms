@@ -856,7 +856,6 @@ label {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
   animation: search_open 0.6s;
 }
-
 @media screen and (min-width: 960px) {
   .search.open {
     display: grid;
@@ -979,7 +978,6 @@ label {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 0.5fr;
-
 }
 
 .filter-title {
@@ -1060,4 +1058,26 @@ label {
   100% {
       opacity: 1;
   }
+}
+
+.resetFilterBtn {
+  align-self: flex-end;
+  display: flex;
+  flex-direction: row-reverse;
+  grid-column: 3;
+  grid-row: 3;
+}
+
+#resetFilterBtn {
+  background-color:#e3170a;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  height: 35px;
+  width: 70px;
+}
+
+#resetFilterBtn:hover {
+  background-color:#cb1509;
 }
