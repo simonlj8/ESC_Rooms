@@ -194,7 +194,10 @@ function searchData(value, data) {
 }
 
 // reset filter
-document.getElementById("resetFilterBtn").addEventListener("click", function () {
+if (pageCheck.classList.length == 1) {
+  document.getElementById("resetFilterBtn").addEventListener("click", function () {
+
+
   
   // reset type filter
   let typeId = document.getElementsByClassName("cb-type");
@@ -227,6 +230,7 @@ document.getElementById("resetFilterBtn").addEventListener("click", function () 
 
   renderChallenge(challenge);
 });
+};
 
 // display challenges
 function renderChallenge(data) {
