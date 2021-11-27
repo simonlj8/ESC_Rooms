@@ -8,7 +8,7 @@ let selectNumber = document.getElementById("number");
 let valueDate = document.getElementById("date").value;
 let RatingFilterFrom = 0;
 let RatingFilterTo = 5;
-
+let labelSorted = [];
 
 
 addEventListener("load", async function loadData() {
@@ -26,12 +26,12 @@ addEventListener("load", async function loadData() {
 
     // render labels
     let jslabels = document.getElementById("labels")
+    let chkBxAttr = labelSorted.filter((v, i, a) => a.indexOf(v) === i);
     
-    
-    let oldchkBxAttr = ["web", "linux", "cryptography", "coding", "ctf", "ssh", "electronics", "javaScript", "bash", "phreaking", "web" , "ctf", "web", "linux", "cryptography"];
-    let chkBxAttr = oldchkBxAttr.filter((v, i, a) => a.indexOf(v) === i);
-    
-  
+    for (let i =0; i < chkBxAttr.length; i++) {
+      chkBxAttr[i] = chkBxAttr[i].charAt(0).toUpperCase()+chkBxAttr[i].substr(1);
+    }
+
     for (let i = 0; i < chkBxAttr.length; i++) {
         let chkBx = document.createElement("INPUT");
         chkBx.setAttribute("type", "checkbox");
@@ -45,7 +45,7 @@ addEventListener("load", async function loadData() {
         
         chkBx.addEventListener("change", function () {
           if (chkBx.checked == true) {
-            labelArray.push (chkBxAttr[i]);
+            labelArray.push (chkBxAttr[i].toLowerCase());
           } else {
             labelArray.pop (chkBxAttr[i]);
           }
@@ -58,7 +58,6 @@ addEventListener("load", async function loadData() {
     }
   }
 });
-
 
 function getTopChallenges(data, count){
   const sortedData = data.sort((a, b) => a.rating > b.rating ? -1 : 1);
@@ -148,20 +147,6 @@ typeBoxes.forEach(function (checkbox) {
 let labelBoxes = document.querySelectorAll(".cb-label");
 let labelArray = [];
 
-/* return value to array from "labels" if checked
-labelBoxes.forEach(function (checkbox) {
-  checkbox.addEventListener("change", function () {
-    console.log(labelBoxes)
-    labelArray = Array.from(labelBoxes)
-      .filter((i) => i.checked)
-      .map((i) => i.value);
-    
-    let data = searchData(value, challenge);
-    renderChallenge(data);
-  });
-}); */
-
-
 // key word filter
 if (pageCheck.classList.length == 1) {
   inputData = document.getElementById("inputSearch");
@@ -226,6 +211,7 @@ document.getElementById("resetFilterBtn").addEventListener("click", function () 
       let id=(labelId[j].id)
       document.getElementById(id).checked = false;
   }
+  labelArray = [];
 
   // reset star filter
   RatingFilterFrom = 0;
@@ -258,6 +244,12 @@ function renderChallenge(data) {
   for (let i = 0; i < data.length; i++) {
     rating = data[i].rating;
     let type = data[i].type;
+
+    labels = data[i].labels;
+    for (let j = 0; j < labels.length; j++) {
+      labelSorted.push(labels[j])
+    }
+
     const starsTotal = 5;
     const starPercentage = (rating / starsTotal) * 100;
     const starPercentageRounded = Math.round(starPercentage / 10) * 10 + "%";

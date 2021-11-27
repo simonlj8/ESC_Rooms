@@ -960,6 +960,10 @@ label {
   color: white;
   position: relative;
 }
+ 
+label {
+  margin: 5px;
+}
 
 @keyframes label-klick {
   0% {
