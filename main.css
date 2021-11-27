@@ -888,6 +888,10 @@ label {
   grid-row-start: 2;
 }
 
+.online {
+  color: #cb1509;
+}
+
 .search-type input {
   margin-top: 10px;
 }

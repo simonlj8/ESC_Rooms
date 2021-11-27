@@ -9,6 +9,8 @@ let valueDate = document.getElementById("date").value;
 let RatingFilterFrom = 0;
 let RatingFilterTo = 5;
 
+
+
 addEventListener("load", async function loadData() {
   let challenges = "https://lernia-sjj-assignments.vercel.app/api/challenges";
   const response = await fetch(challenges);
@@ -21,6 +23,39 @@ addEventListener("load", async function loadData() {
   } else {
     challenge = data.challenges;
     renderChallenge(challenge);
+
+    // render labels
+    let jslabels = document.getElementById("labels")
+    
+    
+    let oldchkBxAttr = ["web", "linux", "cryptography", "coding", "ctf", "ssh", "electronics", "javaScript", "bash", "phreaking", "web" , "ctf", "web", "linux", "cryptography"];
+    let chkBxAttr = oldchkBxAttr.filter((v, i, a) => a.indexOf(v) === i);
+    
+  
+    for (let i = 0; i < chkBxAttr.length; i++) {
+        let chkBx = document.createElement("INPUT");
+        chkBx.setAttribute("type", "checkbox");
+        chkBx.setAttribute("id", chkBxAttr[i]);
+        chkBx.setAttribute("value", chkBxAttr[i]);
+        chkBx.setAttribute("class", "cb-label");
+        
+        let chkBxLabel = document.createElement("label");
+        chkBxLabel.setAttribute("for", chkBxAttr[i]);
+        chkBxLabel.innerHTML = chkBxAttr[i];
+        
+        chkBx.addEventListener("change", function () {
+          if (chkBx.checked == true) {
+            labelArray.push (chkBxAttr[i]);
+          } else {
+            labelArray.pop (chkBxAttr[i]);
+          }
+
+          let data = searchData(value, challenge);
+          renderChallenge(data);
+        });
+        
+        jslabels.append(chkBx, chkBxLabel);   
+    }
   }
 });
 
@@ -32,6 +67,8 @@ function getTopChallenges(data, count){
   const topChallenges = sortedData.slice(0, sliceend)
   return topChallenges;
 }
+
+
 
 // starrating from
 document.addEventListener("DOMContentLoaded", () => {
@@ -108,20 +145,21 @@ typeBoxes.forEach(function (checkbox) {
   });
 });
 
-// return value to array from "labels" if checked
 let labelBoxes = document.querySelectorAll(".cb-label");
 let labelArray = [];
 
+/* return value to array from "labels" if checked
 labelBoxes.forEach(function (checkbox) {
   checkbox.addEventListener("change", function () {
+    console.log(labelBoxes)
     labelArray = Array.from(labelBoxes)
       .filter((i) => i.checked)
       .map((i) => i.value);
-
+    
     let data = searchData(value, challenge);
     renderChallenge(data);
   });
-});
+}); */
 
 
 // key word filter
@@ -155,6 +193,11 @@ function searchData(value, data) {
         }
       }
     }
+    console.log(labels)
+    console.log(type)
+    console.log(title)
+    console.log(rating)
+    console.log(description)  
   }
   if (filteredData.length == 0) {
     document.getElementById('filter-error').innerHTML = "No room match search";
@@ -174,7 +217,7 @@ document.getElementById("resetFilterBtn").addEventListener("click", function () 
   for(let i = 0; i < typeIdCount; i++){
       let id=(typeId[i].id)
       document.getElementById(id).checked = false;
-  }
+  } 
 
   // reset label filter
   let labelId = document.getElementsByClassName("cb-label");
@@ -185,8 +228,8 @@ document.getElementById("resetFilterBtn").addEventListener("click", function () 
   }
 
   // reset star filter
-  let RatingFilterFrom = 0;
-  let RatingFilterTo = 5;
+  RatingFilterFrom = 0;
+  RatingFilterTo = 5;
   SetRatingStar(0, starsFrom);
   SetRatingStar(5, starsTo);
 
