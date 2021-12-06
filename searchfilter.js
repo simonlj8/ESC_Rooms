@@ -151,9 +151,10 @@ let labelArray = [];
 if (pageCheck.classList.length == 1) {
   inputData = document.getElementById("inputSearch");
   inputData.addEventListener("keyup", function () {
+    if (inputData.value.length >= 3 || inputData.value.length == 0){  
   let data = searchData(value, challenge);
   renderChallenge(data);
-});
+}});
 } 
 
 // run filter
