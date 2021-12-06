@@ -352,6 +352,7 @@ img {
   box-shadow: 0 0 1rem rgba(182, 189, 181, 0.5);
   margin: 1rem;
   overflow: hidden;
+  position: relative;
 }
 .challenges-item > *:not(img) {
   margin: 0 1rem;
@@ -1089,3 +1090,12 @@ label {
 #resetFilterBtn:hover {
   background-color:#cb1509;
 }
+
+.offOrOnIkon {
+  position: absolute;
+  right: 0;
+  top: 10px; 
+  font-size: 30px;
+  color: #e3170a;
+}
+
