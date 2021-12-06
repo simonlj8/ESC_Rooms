@@ -326,10 +326,6 @@ if (pageCheck.classList.length == 1) {
   });
 }
 
-
-// mobile menu
-
-
 // bookning
 document.querySelector(".modal-btn").addEventListener("click", () => {
   let today = new Date()
@@ -338,7 +334,7 @@ document.querySelector(".modal-btn").addEventListener("click", () => {
   valueDate = document.getElementById("date").value;
 
   if (valueDate < date) {
-    alert("Date must be after todays date");
+    document.querySelector(".invalid-date").innerHTML = "Date must be after todays date";
     return false;
   }
   if (valueDate > datePlusYear) {
@@ -424,6 +420,7 @@ document.querySelector(".modal-step2").classList.toggle("close", false);
 document.querySelector(".modal-step2").classList.toggle("open", false);
 document.querySelector(".modal-step3").classList.toggle("open", false);
 
+document.querySelector(".invalid-date").innerHTML = "";
 removeOptions(selectTime, selectNumber);
 }
 
