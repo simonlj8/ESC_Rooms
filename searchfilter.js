@@ -61,13 +61,10 @@ addEventListener("load", async function loadData() {
 
 function getTopChallenges(data, count){
   const sortedData = data.sort((a, b) => a.rating > b.rating ? -1 : 1);
-  
   const sliceend = count
   const topChallenges = sortedData.slice(0, sliceend)
   return topChallenges;
 }
-
-
 
 // starrating from
 document.addEventListener("DOMContentLoaded", () => {
@@ -85,10 +82,13 @@ document.addEventListener("DOMContentLoaded", () => {
       if (ratingFrom == 0) {
         this.setAttribute("star-rating-from", 1);
       }
-      RatingFilterFrom = ratingFrom;
-      let data = searchData(value, challenge);
-      renderChallenge(data);
-      return SetRatingStar(ratingFrom, starsFrom);
+      let chkRatingFrom = ratingFrom;
+      if (chkRatingFrom <= RatingFilterTo) {
+        RatingFilterFrom = ratingFrom;
+        let data = searchData(value, challenge);
+        renderChallenge(data);
+        return SetRatingStar(ratingFrom, starsFrom);
+      };
     });
   });
 });
@@ -110,10 +110,13 @@ document.addEventListener("DOMContentLoaded", () => {
       if (ratingTo == 0) {
         this.setAttribute("star-rating-to", 1);
       }
-      RatingFilterTo = ratingTo;
-      let data = searchData(value, challenge);
-      renderChallenge(data);
-      return SetRatingStar(ratingTo, starsTo);
+      let chkRatingTo = ratingTo;
+      if (chkRatingTo >= RatingFilterFrom) {
+        RatingFilterTo = ratingTo;
+        let data = searchData(value, challenge);
+        renderChallenge(data);
+        return SetRatingStar(ratingTo, starsTo);
+      };
     });
   });
 });
@@ -178,11 +181,7 @@ function searchData(value, data) {
         }
       }
     }
-    console.log(labels)
-    console.log(type)
-    console.log(title)
-    console.log(rating)
-    console.log(description)  
+
   }
   if (filteredData.length == 0) {
     document.getElementById('filter-error').innerHTML = "No room match search";
@@ -196,9 +195,7 @@ function searchData(value, data) {
 // reset filter
 if (pageCheck.classList.length == 1) {
   document.getElementById("resetFilterBtn").addEventListener("click", function () {
-
-
-  
+ 
   // reset type filter
   let typeId = document.getElementsByClassName("cb-type");
   let typeIdCount = typeId.length;
@@ -326,10 +323,6 @@ if (pageCheck.classList.length == 1) {
   });
 }
 
-
-// mobile menu
-
-
 // bookning
 document.querySelector(".modal-btn").addEventListener("click", () => {
   let today = new Date()
@@ -391,10 +384,8 @@ document.querySelector(".modal-btn2").addEventListener("click", () => {
     })
       .then(response => response.json())
       .then(booking => {
-        console.log('Success:', booking);
       })
       .catch((error) => {
-        console.error('Error:', error);
       });
     document.querySelector(".modal-step2").classList.toggle("close"),
       document.querySelector(".modal-step3").classList.toggle("open");
