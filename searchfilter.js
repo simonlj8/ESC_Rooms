@@ -333,16 +333,16 @@ document.querySelector(".modal-btn").addEventListener("click", () => {
   let datePlusYear = today.getFullYear() + 1 + '-' + (today.getMonth() + 1) + '-' + today.getDate();
   valueDate = document.getElementById("date").value;
 
+  if (!valueDate) {
+    document.querySelector(".invalid-date").innerHTML = "Input must not be empty";
+    return false;
+  }
   if (valueDate < date) {
     document.querySelector(".invalid-date").innerHTML = "Date must be after todays date";
     return false;
   }
   if (valueDate > datePlusYear) {
-    alert("Date can not exceed 1 year from todays date");
-    return false;
-  }
-  if (!valueDate) {
-    alert("Input must not be empty");
+    document.querySelector(".invalid-date").innerHTML = "Date can not exceed 1 year from todays date";
     return false;
   } else {
 
