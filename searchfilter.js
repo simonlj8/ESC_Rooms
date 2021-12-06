@@ -384,8 +384,10 @@ document.querySelector(".modal-btn2").addEventListener("click", () => {
     })
       .then(response => response.json())
       .then(booking => {
+        console.log('Success:', booking);
       })
       .catch((error) => {
+        console.error('Error:', error);
       });
     document.querySelector(".modal-step2").classList.toggle("close"),
       document.querySelector(".modal-step3").classList.toggle("open");
