@@ -704,6 +704,10 @@ label {
   color: #fff;
 }
 
+.modal-btn:hover {
+  background-color: #b81206;
+}
+
 .modal-step2 {
   visibility: hidden;
   display: flex;
@@ -756,6 +760,10 @@ label {
   color: #fff;
 }
 
+.modal-btn2:hover {
+  background-color: #b81206;
+}
+
 .modal-step3 {
   visibility: hidden;
 }
@@ -777,6 +785,7 @@ label {
 }
 
 .modal-btn3 {
+  text-decoration: none;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: auto;
@@ -795,6 +804,10 @@ label {
   right: 2%;
   color: #75c6e0;
   font-size: 50px;
+}
+
+.close-modal:hover {
+  color: #268daf;
 }
 
 .overlay.active {
@@ -889,12 +902,20 @@ label {
   grid-row-start: 2;
 }
 
+.search-type label:hover {
+  cursor: pointer;
+}
+
 .online {
   color: #cb1509;
 }
 
 .search-type input {
   margin-top: 10px;
+}
+
+.search-type input:hover {
+  cursor: pointer;
 }
 
 /* search by rating */
@@ -905,6 +926,10 @@ label {
 
 .rating-search ul {
   display: inline-block;
+}
+
+.rating-search ul:hover {
+  cursor: pointer;
 }
 
 .rating-search li {
@@ -952,6 +977,10 @@ label {
   padding-left: 12px;
   padding-right: 12px;
   position: relative;
+}
+
+.search-labels label:hover {
+  cursor: pointer;
 }
 
 .search-labels input[type=checkbox]:checked+label {
