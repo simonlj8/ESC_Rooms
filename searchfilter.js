@@ -272,8 +272,10 @@ function renderChallenge(data) {
     </div>
        <p class="challenge-description">${data[i].description}</p>    
     `;
-    let bookBtn1 = `<a class="challenge-cta" href="#">Book this room</a>`;
-    let bookBtn2 = `<a class="challenge-cta" href="#">Take challenge online</a>`;
+    let bookBtn1 = `<a class="challenge-cta" href="#">Book this room</a>
+    <span class="fas fa-home offOrOnIkon"></span>`;
+    let bookBtn2 = `<a class="challenge-cta" href="#">Take challenge online</a>
+    <span class="fas fa-laptop offOrOnIkon" ></span>`;
     const li = document.createElement("li");
 
     if (type == "online") {
