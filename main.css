@@ -1087,5 +1087,12 @@ label {
 }
 
 #resetFilterBtn:hover {
-  background-color:#cb1509;
+  background-color: #cb1509;
+}
+
+.invalid-date {
+  visibility: visible;
+  color: #e3170a;
+  font-style: italic;
+  font-size: 0.9rem;
 }
