@@ -61,13 +61,10 @@ addEventListener("load", async function loadData() {
 
 function getTopChallenges(data, count) {
   const sortedData = data.sort((a, b) => a.rating > b.rating ? -1 : 1);
-
   const sliceend = count
   const topChallenges = sortedData.slice(0, sliceend)
   return topChallenges;
 }
-
-
 
 // starrating from
 document.addEventListener("DOMContentLoaded", () => {
@@ -85,10 +82,13 @@ document.addEventListener("DOMContentLoaded", () => {
       if (ratingFrom == 0) {
         this.setAttribute("star-rating-from", 1);
       }
-      RatingFilterFrom = ratingFrom;
-      let data = searchData(value, challenge);
-      renderChallenge(data);
-      return SetRatingStar(ratingFrom, starsFrom);
+      let chkRatingFrom = ratingFrom;
+      if (chkRatingFrom <= RatingFilterTo) {
+        RatingFilterFrom = ratingFrom;
+        let data = searchData(value, challenge);
+        renderChallenge(data);
+        return SetRatingStar(ratingFrom, starsFrom);
+      };
     });
   });
 });
@@ -110,10 +110,13 @@ document.addEventListener("DOMContentLoaded", () => {
       if (ratingTo == 0) {
         this.setAttribute("star-rating-to", 1);
       }
-      RatingFilterTo = ratingTo;
-      let data = searchData(value, challenge);
-      renderChallenge(data);
-      return SetRatingStar(ratingTo, starsTo);
+      let chkRatingTo = ratingTo;
+      if (chkRatingTo >= RatingFilterFrom) {
+        RatingFilterTo = ratingTo;
+        let data = searchData(value, challenge);
+        renderChallenge(data);
+        return SetRatingStar(ratingTo, starsTo);
+      };
     });
   });
 });
@@ -151,10 +154,11 @@ let labelArray = [];
 if (pageCheck.classList.length == 1) {
   inputData = document.getElementById("inputSearch");
   inputData.addEventListener("keyup", function () {
-    let data = searchData(value, challenge);
-    renderChallenge(data);
-  });
-}
+    if (inputData.value.length >= 3 || inputData.value.length == 0){  
+  let data = searchData(value, challenge);
+  renderChallenge(data);
+}});
+} 
 
 // run filter
 function searchData(value, data) {
@@ -178,11 +182,7 @@ function searchData(value, data) {
         }
       }
     }
-    console.log(labels)
-    console.log(type)
-    console.log(title)
-    console.log(rating)
-    console.log(description)
+
   }
   if (filteredData.length == 0) {
     document.getElementById('filter-error').innerHTML = "No room match search";
@@ -197,13 +197,11 @@ function searchData(value, data) {
 if (pageCheck.classList.length == 1) {
   document.getElementById("resetFilterBtn").addEventListener("click", function () {
 
-
-
-    // reset type filter
-    let typeId = document.getElementsByClassName("cb-type");
-    let typeIdCount = typeId.length;
-    for (let i = 0; i < typeIdCount; i++) {
-      let id = (typeId[i].id)
+  // reset type filter
+  let typeId = document.getElementsByClassName("cb-type");
+  let typeIdCount = typeId.length;
+  for(let i = 0; i < typeIdCount; i++){
+      let id=(typeId[i].id)
       document.getElementById(id).checked = false;
     }
 
@@ -272,8 +270,10 @@ function renderChallenge(data) {
     </div>
        <p class="challenge-description">${data[i].description}</p>    
     `;
-    let bookBtn1 = `<a class="challenge-cta" href="#">Book this room</a>`;
-    let bookBtn2 = `<a class="challenge-cta" href="#">Take challenge online</a>`;
+    let bookBtn1 = `<a class="challenge-cta" href="#">Book this room</a>
+    <span class="fas fa-home offOrOnIkon"></span>`;
+    let bookBtn2 = `<a class="challenge-cta" href="#">Take challenge online</a>
+    <span class="fas fa-laptop offOrOnIkon" ></span>`;
     const li = document.createElement("li");
 
     if (type == "online") {
