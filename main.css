@@ -26,6 +26,7 @@ img {
   background-image: url("images/logo.png");
   background-size: 120px;
   background-repeat: no-repeat;
+  
 }
 @media screen and (min-width: 960px) {
   .header .logo {
@@ -33,7 +34,11 @@ img {
     height: auto;
     padding-top: 2.8rem;
     padding-bottom: 0.8rem;
-    font-size: 2rem;
+    font-size: 2rem;  
+  }
+  .header .logo .indexLink {
+    text-decoration: none;
+    color:white;
   }
 }
 
