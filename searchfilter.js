@@ -378,7 +378,7 @@ document.querySelector(".modal-btn2").addEventListener("click", () => {
   let booking = { name: valueName, email: valueEmail, date: valueDate, time: valueTime, participants: parseInt(valueNumber) };
 
   if (!valueName || !valueEmail || !valueTime || !valueNumber) {
-    alert("Input must not be empty");
+    document.querySelector(".empty-input").innerHTML = "Input must not be empty";
     return false;
   } else {
 

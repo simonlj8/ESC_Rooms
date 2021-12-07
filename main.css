@@ -1130,6 +1130,13 @@ label {
   font-size: 0.9rem;
 }
 
+.empty-input {
+  visibility: visible;
+  color: #e3170a;
+  font-style: italic;
+  font-size: 0.9rem;
+}
+
 /* styling for the icons in the rop right of the pictures */
 .offOrOnIkon {
   position: absolute;
