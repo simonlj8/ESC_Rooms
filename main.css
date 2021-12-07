@@ -651,11 +651,12 @@ img {
 }
 @media screen and (min-width: 960px) {
   .modal {
-    width: 40vw;
+    width: 50vw;
     max-width: 800px;
     height: 60vh;
     max-height: 800px;
-    padding: 1rem;
+    min-height: 400px;
+    padding: 2rem;
   }
 } 
 
@@ -679,8 +680,8 @@ img {
 
 .modal-room-title1 {
   font-weight: normal;
-  font-size: 1.6rem;
-  padding: 60px 0px;
+  font-size: 1.5rem;
+  padding: 10px 40px 20px 0px;
 }
 
 .modal-step1 p {
@@ -737,8 +738,8 @@ label {
 
 .modal-room-title2 {
   font-weight: normal;
-  font-size: 1.6rem;
-  padding: 60px 0px;
+  font-size: 1.5rem;
+  padding: 10px 40px 20px 0px;
 }
 
 .modal-step2.close {
