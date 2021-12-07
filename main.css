@@ -354,6 +354,9 @@ img {
   overflow: hidden;
   position: relative;
 }
+.challenges-item:hover {
+  box-shadow: 0.25rem 0.25rem 1rem rgba(182, 189, 181, 1.5);
+}
 .challenges-item > *:not(img) {
   margin: 0 1rem;
 }
