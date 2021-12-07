@@ -1,6 +1,6 @@
 let value;
 let challenge;
-let pageCheck = document.querySelector(".challenges"); 
+let pageCheck = document.querySelector(".challenges");
 let modal = document.querySelector(".modal");
 let overlay = document.querySelector(".overlay");
 let selectTime = document.getElementById("time");
@@ -27,39 +27,39 @@ addEventListener("load", async function loadData() {
     // render labels
     let jslabels = document.getElementById("labels")
     let chkBxAttr = labelSorted.filter((v, i, a) => a.indexOf(v) === i);
-    
-    for (let i =0; i < chkBxAttr.length; i++) {
-      chkBxAttr[i] = chkBxAttr[i].charAt(0).toUpperCase()+chkBxAttr[i].substr(1);
+
+    for (let i = 0; i < chkBxAttr.length; i++) {
+      chkBxAttr[i] = chkBxAttr[i].charAt(0).toUpperCase() + chkBxAttr[i].substr(1);
     }
 
     for (let i = 0; i < chkBxAttr.length; i++) {
-        let chkBx = document.createElement("INPUT");
-        chkBx.setAttribute("type", "checkbox");
-        chkBx.setAttribute("id", chkBxAttr[i]);
-        chkBx.setAttribute("value", chkBxAttr[i]);
-        chkBx.setAttribute("class", "cb-label");
-        
-        let chkBxLabel = document.createElement("label");
-        chkBxLabel.setAttribute("for", chkBxAttr[i]);
-        chkBxLabel.innerHTML = chkBxAttr[i];
-        
-        chkBx.addEventListener("change", function () {
-          if (chkBx.checked == true) {
-            labelArray.push (chkBxAttr[i].toLowerCase());
-          } else {
-            labelArray.pop (chkBxAttr[i]);
-          }
+      let chkBx = document.createElement("INPUT");
+      chkBx.setAttribute("type", "checkbox");
+      chkBx.setAttribute("id", chkBxAttr[i]);
+      chkBx.setAttribute("value", chkBxAttr[i]);
+      chkBx.setAttribute("class", "cb-label");
 
-          let data = searchData(value, challenge);
-          renderChallenge(data);
-        });
-        
-        jslabels.append(chkBx, chkBxLabel);   
+      let chkBxLabel = document.createElement("label");
+      chkBxLabel.setAttribute("for", chkBxAttr[i]);
+      chkBxLabel.innerHTML = chkBxAttr[i];
+
+      chkBx.addEventListener("change", function () {
+        if (chkBx.checked == true) {
+          labelArray.push(chkBxAttr[i].toLowerCase());
+        } else {
+          labelArray.pop(chkBxAttr[i]);
+        }
+
+        let data = searchData(value, challenge);
+        renderChallenge(data);
+      });
+
+      jslabels.append(chkBx, chkBxLabel);
     }
   }
 });
 
-function getTopChallenges(data, count){
+function getTopChallenges(data, count) {
   const sortedData = data.sort((a, b) => a.rating > b.rating ? -1 : 1);
   const sliceend = count
   const topChallenges = sortedData.slice(0, sliceend)
@@ -189,45 +189,45 @@ function searchData(value, data) {
     document.querySelector("#filter-error").classList.toggle("active", true);
   } else {
     document.querySelector("#filter-error").classList.toggle("active", false);
-}
+  }
   return filteredData;
 }
 
 // reset filter
 if (pageCheck.classList.length == 1) {
   document.getElementById("resetFilterBtn").addEventListener("click", function () {
- 
+
   // reset type filter
   let typeId = document.getElementsByClassName("cb-type");
   let typeIdCount = typeId.length;
   for(let i = 0; i < typeIdCount; i++){
       let id=(typeId[i].id)
       document.getElementById(id).checked = false;
-  } 
+    }
 
-  // reset label filter
-  let labelId = document.getElementsByClassName("cb-label");
-  let labelIdCount = labelId.length;
-  for(let j = 0; j < labelIdCount; j++){
-      let id=(labelId[j].id)
+    // reset label filter
+    let labelId = document.getElementsByClassName("cb-label");
+    let labelIdCount = labelId.length;
+    for (let j = 0; j < labelIdCount; j++) {
+      let id = (labelId[j].id)
       document.getElementById(id).checked = false;
-  }
-  labelArray = [];
+    }
+    labelArray = [];
 
-  // reset star filter
-  RatingFilterFrom = 0;
-  RatingFilterTo = 5;
-  SetRatingStar(0, starsFrom);
-  SetRatingStar(5, starsTo);
+    // reset star filter
+    RatingFilterFrom = 0;
+    RatingFilterTo = 5;
+    SetRatingStar(0, starsFrom);
+    SetRatingStar(5, starsTo);
 
-  // reset input field
-  document.getElementById('inputSearch').value = "";
+    // reset input field
+    document.getElementById('inputSearch').value = "";
 
-  // reset filter-error message
-  document.getElementById('filter-error').innerHTML = "";
+    // reset filter-error message
+    document.getElementById('filter-error').innerHTML = "";
 
-  renderChallenge(challenge);
-});
+    renderChallenge(challenge);
+  });
 };
 
 // display challenges
@@ -237,12 +237,12 @@ function renderChallenge(data) {
 
   //checking if it is the index or challenge page
   if (pageCheck.classList.contains("index")) {
-    ul = ulIndex; 
+    ul = ulIndex;
   } else {
     ul = ulChallenge;
   }
-    ul.innerHTML = "";
- 
+  ul.innerHTML = "";
+
   for (let i = 0; i < data.length; i++) {
     rating = data[i].rating;
     let type = data[i].type;
@@ -313,7 +313,7 @@ document.querySelector(".main-nav-toggle").addEventListener("click", () => {
 
 //checking if it is the index or challenge page and only shows the filter on the challenge page
 if (pageCheck.classList.length == 1) {
-  
+
   // toggle filters
   document.querySelector(".filter-btn").addEventListener("click", () => {
     document.querySelector(".filter-btn").classList.toggle("close"),
@@ -322,7 +322,7 @@ if (pageCheck.classList.length == 1) {
   document.querySelector(".close-filter").addEventListener("click", () => {
     document.querySelector(".filter-btn").classList.remove("close"),
       document.querySelector("#search").classList.remove("open");
-  
+
   });
 }
 
@@ -332,19 +332,20 @@ document.querySelector(".modal-btn").addEventListener("click", () => {
   let date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
   let datePlusYear = today.getFullYear() + 1 + '-' + (today.getMonth() + 1) + '-' + today.getDate();
   valueDate = document.getElementById("date").value;
+  invalidDate = document.querySelector(".invalid-date");
 
-  if (valueDate < date) {
-    alert("Date must be after todays date");
-    return false;
-  }
-  if (valueDate > datePlusYear) {
-    alert("Date can not exceed 1 year from todays date");
-    return false;
-  }
-  if (!valueDate) {
-    alert("Input must not be empty");
-    return false;
-  } else {
+    if (!valueDate) {
+      invalidDate.innerHTML = "Input must not be empty";
+      return false;
+    }
+    if (valueDate < date) {
+      invalidDate.innerHTML = "Date must be after todays date";
+      return false;
+    }
+    if (valueDate > datePlusYear) {
+      invalidDate.innerHTML = "Date can't exceed 1 year from todays date";
+      return false;
+    } else {
 
     async function datefunction() {
       avalibleDate = "https://lernia-sjj-assignments.vercel.app/api/booking/available-times?date=" + valueDate;
@@ -400,12 +401,12 @@ document.querySelector(".modal-btn2").addEventListener("click", () => {
 //toggle modal
 function removeOptions(selectTime, selectNumber) {
   let i, L = selectTime.options.length - 1;
-  for(i = L; i >= 0; i--) {
-     selectTime.options.remove(i);
+  for (i = L; i >= 0; i--) {
+    selectTime.options.remove(i);
   }
   let j, F = selectNumber.options.length - 1;
-  for(j = F; j >= 0; j--) {
-     selectNumber.options.remove(j);
+  for (j = F; j >= 0; j--) {
+    selectNumber.options.remove(j);
   }
   document.getElementById("date").value = "";
   document.getElementById("email").value = "";
@@ -413,14 +414,15 @@ function removeOptions(selectTime, selectNumber) {
 }
 
 function toggleClose() {
-document.querySelector(".overlay").classList.toggle("active", false);
-document.querySelector(".modal").classList.toggle("open", false);
-document.querySelector(".modal-step1").classList.toggle("close", false);
-document.querySelector(".modal-step2").classList.toggle("close", false);
-document.querySelector(".modal-step2").classList.toggle("open", false);
-document.querySelector(".modal-step3").classList.toggle("open", false);
+  document.querySelector(".overlay").classList.toggle("active", false);
+  document.querySelector(".modal").classList.toggle("open", false);
+  document.querySelector(".modal-step1").classList.toggle("close", false);
+  document.querySelector(".modal-step2").classList.toggle("close", false);
+  document.querySelector(".modal-step2").classList.toggle("open", false);
+  document.querySelector(".modal-step3").classList.toggle("open", false);
+  invalidDate.innerHTML = "";
 
-removeOptions(selectTime, selectNumber);
+  removeOptions(selectTime, selectNumber);
 }
 
 document.querySelector(".close-modal").addEventListener("click", function E() {
