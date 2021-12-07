@@ -378,7 +378,7 @@ document.querySelector(".modal-btn2").addEventListener("click", () => {
   let booking = { name: valueName, email: valueEmail, date: valueDate, time: valueTime, participants: parseInt(valueNumber) };
 
   if (!valueName || !valueEmail || !valueTime || !valueNumber) {
-    alert("Input must not be empty");
+    document.querySelector(".empty-input").innerHTML = "Input must not be empty";
     return false;
   } else {
 
@@ -424,7 +424,9 @@ function toggleClose() {
   document.querySelector(".modal-step2").classList.toggle("close", false);
   document.querySelector(".modal-step2").classList.toggle("open", false);
   document.querySelector(".modal-step3").classList.toggle("open", false);
+  
   invalidDate.innerHTML = "";
+  document.querySelector(".empty-input").innerHTML = "";
 
   removeOptions(selectTime, selectNumber);
 }
