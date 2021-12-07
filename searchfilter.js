@@ -328,9 +328,13 @@ if (pageCheck.classList.length == 1) {
 
 // bookning
 document.querySelector(".modal-btn").addEventListener("click", () => {
-  let today = new Date()
-  let date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
-  let datePlusYear = today.getFullYear() + 1 + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+  let date = new Date().toJSON().slice(0, 10);
+  let year = new Date().toJSON().slice(0, 4);
+  let month = new Date().toJSON().slice(5, 7);
+  let day = new Date().toJSON().slice(8, 10);
+
+  let datePlusYear = Number(year) +1 + '-' + month + '-' + day;
+
   valueDate = document.getElementById("date").value;
   invalidDate = document.querySelector(".invalid-date");
 
