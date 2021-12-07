@@ -424,8 +424,7 @@ function toggleClose() {
   document.querySelector(".modal-step2").classList.toggle("close", false);
   document.querySelector(".modal-step2").classList.toggle("open", false);
   document.querySelector(".modal-step3").classList.toggle("open", false);
-  
-  invalidDate.innerHTML = "";
+  document.querySelector(".invalid-date").innerHTML = "";
   document.querySelector(".empty-input").innerHTML = "";
 
   removeOptions(selectTime, selectNumber);
