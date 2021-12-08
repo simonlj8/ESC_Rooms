@@ -9,7 +9,7 @@ let valueDate = document.getElementById("date").value;
 let RatingFilterFrom = 0;
 let RatingFilterTo = 5;
 let labelSorted = [];
-
+let idForChallenge; 
 
 addEventListener("load", async function loadData() {
   let challenges = "https://lernia-sjj-assignments.vercel.app/api/challenges";
@@ -253,6 +253,7 @@ function renderChallenge(data) {
     for (let j = 0; j < labels.length; j++) {
       labelSorted.push(labels[j])
     }
+    let challengeId = (`${data[i].id}`)
 
     const starsTotal = 5;
     const starPercentage = (rating / starsTotal) * 100;
@@ -290,6 +291,7 @@ function renderChallenge(data) {
       function () {
         let min = Number(`${data[i].minParticipants}`);
         let max = Number(`${data[i].maxParticipants}`);
+        idForChallenge = Number(challengeId); 
 
         while (min <= max) {
           selectNumber.options[selectNumber.options.length] = new Option(
@@ -354,7 +356,7 @@ document.querySelector(".modal-btn").addEventListener("click", () => {
     } else {
 
     async function datefunction() {
-      avalibleDate = "https://lernia-sjj-assignments.vercel.app/api/booking/available-times?date=" + valueDate;
+      avalibleDate = "https://lernia-sjj-assignments.vercel.app/api/booking/available-times?challenge=" + idForChallenge + "&date=" + valueDate;
       let response = await fetch(avalibleDate);
       let dateArray = await response.json();
 
@@ -377,7 +379,7 @@ document.querySelector(".modal-btn2").addEventListener("click", () => {
   let valueTime = document.getElementById("time").value;
   let valueNumber = document.getElementById("number").value;
 
-  let booking = { name: valueName, email: valueEmail, date: valueDate, time: valueTime, participants: parseInt(valueNumber) };
+  let booking = { challenge: idForChallenge, name: valueName, email: valueEmail, date: valueDate, time: valueTime, participants: parseInt(valueNumber) };
 
   if (!valueName || !valueEmail || !valueTime || !valueNumber) {
     document.querySelector(".empty-input").innerHTML = "Input must not be empty";
