@@ -268,7 +268,7 @@ function renderChallenge(data) {
        </ul>
        <small class="challenge-size">${data[i].minParticipants}-${data[i].maxParticipants} participants </small>
     </div>
-       <p class="challenge-description">${data[i].description}</p>    
+       <p class="challenge-description">${data[i].description.slice(0, 50)}</p>    
     `;
     let bookBtn1 = `<a class="challenge-cta" href="#">Book this room</a>
     <span class="fas fa-home offOrOnIkon"></span>`;
