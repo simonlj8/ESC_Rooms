@@ -21,6 +21,7 @@ addEventListener("load", async function loadData() {
     challenge = getTopChallenges(data.challenges, 3)
     renderChallenge(challenge);
   } else {
+    challenge = getTopChallenges(data.challenges, 3)
     challenge = data.challenges;
     renderChallenge(challenge);
 
@@ -61,6 +62,7 @@ addEventListener("load", async function loadData() {
 
 function getTopChallenges(data, count) {
   const sortedData = data.sort((a, b) => a.rating > b.rating ? -1 : 1);
+  
   const sliceend = count
   const topChallenges = sortedData.slice(0, sliceend)
   return topChallenges;
