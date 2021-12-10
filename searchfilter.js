@@ -10,6 +10,9 @@ let RatingFilterFrom = 0;
 let RatingFilterTo = 5;
 let labelSorted = [];
 let challengeId; 
+let urlData = new URLSearchParams(window.location.search);
+let urlType = urlData.get('type'); 
+
 
 addEventListener("load", async function loadData() {
   let challenges = "https://lernia-sjj-assignments.vercel.app/api/challenges";
@@ -24,6 +27,13 @@ addEventListener("load", async function loadData() {
     challenge = getTopChallenges(data.challenges, 3)
     challenge = data.challenges;
     renderChallenge(challenge);
+
+    if (urlType) {
+      typeArray = [urlType]; 
+      document.getElementById(urlType).checked = true; 
+      let data = searchData(value, challenge)
+      renderChallenge(data);
+    } 
 
     // render labels
     let jslabels = document.getElementById("labels")
