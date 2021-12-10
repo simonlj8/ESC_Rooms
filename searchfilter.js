@@ -6,6 +6,7 @@ let overlay = document.querySelector(".overlay");
 let selectTime = document.getElementById("time");
 let selectNumber = document.getElementById("number");
 let valueDate = document.getElementById("date").value;
+let preloader = document.createElement("div");
 let RatingFilterFrom = 0;
 let RatingFilterTo = 5;
 let labelSorted = [];
@@ -162,6 +163,12 @@ if (pageCheck.classList.length == 1) {
 }});
 } 
 
+function preLoading() {
+  preloader.classList.add("preloader");
+  document.body.appendChild(preloader);
+  preloader.style.display = "block";
+}
+
 // run filter
 function searchData(value, data) {
   let filteredData = [];
@@ -184,7 +191,6 @@ function searchData(value, data) {
         }
       }
     }
-
   }
   if (filteredData.length == 0) {
     document.getElementById('filter-error').innerHTML = "No room match search";
@@ -237,6 +243,10 @@ function renderChallenge(data) {
   let ulChallenge = document.getElementById("challenges-list");
   let ulIndex = document.getElementById("challenges-list-index");
 
+  if (!data.length == 0) {
+    preLoading()
+  }
+  
   //checking if it is the index or challenge page
   if (pageCheck.classList.contains("index")) {
     ul = ulIndex;
@@ -257,7 +267,7 @@ function renderChallenge(data) {
     const starsTotal = 5;
     const starPercentage = (rating / starsTotal) * 100;
     const starPercentageRounded = Math.round(starPercentage / 10) * 10 + "%";
-
+    
     let item = `
     <img class="challenge-picture" src=${data[i].image} />
     <h3 class="challenge-title">${data[i].title} (${data[i].type})</h3>
@@ -305,8 +315,11 @@ function renderChallenge(data) {
         overlay.classList.toggle("active");
       }
     );
-    li.classList.add("challenges-item");
-    ul.append(li);
+  //  setTimeout(function(){  
+      li.classList.add("challenges-item");
+      ul.append(li);
+      preloader.remove(); 
+  //  }, 2000); 
   }
 }
 
