@@ -13,8 +13,14 @@ let labelSorted = [];
 
 addEventListener("load", async function loadData() {
   let challenges = "https://lernia-sjj-assignments.vercel.app/api/challenges";
-  const response = await fetch(challenges);
+  const response = await fetch(challenges1);
   const data = await response.json();
+  console.log(response.status)
+
+  if (!response.ok) {
+    document.querySelector(".filter-btn").classList.remove("close")
+    document.getElementsByClassName("filter-title").innerHTML = "Sorry challenges could not be loaded"
+  }
 
   //checking if it is the index or challenge page
   if (pageCheck.classList.contains("index")) {
