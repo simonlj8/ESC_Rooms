@@ -13,7 +13,7 @@ img {
 }
 
 .header {
-  background-color: #011827;
+  background-color: #021928;
   color: white;
   padding: 1rem;
 }
@@ -82,7 +82,7 @@ img {
 }
 .main-nav .main-menu {
   z-index: 1;
-  background-color: #011827;
+  background-color: #021928;
 }
 @media screen and (max-width: 960px) {
   .main-nav.open {
@@ -129,7 +129,7 @@ img {
 }
 @media screen and (min-width: 960px) {
   .main-nav {
-    background-color: #011827;
+    background-color: #021928;
   }
   .main-nav .main-nav-toggle {
     display: none;
@@ -477,7 +477,7 @@ img {
   padding: 1rem;
   display: flex;
   flex-direction: column;
-  background-color: #011827;
+  background-color: #021928;
   color: white;
   text-align: center;
   font-size: 1.7rem;
@@ -496,7 +496,7 @@ img {
 .story-cta {
   display: block;
   margin: 0.5rem;
-  background-color: #011827;
+  background-color: #021928;
   padding: 1rem 3rem;
   border-radius: 0.3rem;
   color: black;
@@ -585,7 +585,7 @@ img {
 }
 
 .footer {
-  background-color: #011827;
+  background-color: #021928;
   color: white;
   padding: 5rem 0;
 }
@@ -650,7 +650,7 @@ img {
   height: 90vh;
   color: #fff;
   padding: 1rem;
-  background: #011827;
+  background: #021928;
   border-radius: 4px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.7);
 }
